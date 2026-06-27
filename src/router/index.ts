@@ -23,6 +23,26 @@ const router = createRouter({
           name: 'icon',
           component: () => import('@/features/icon/page/IconPage.vue'),
         },
+        {
+          path: 'alert',
+          name: 'alert',
+          component: () => import('@/features/alert/page/AlertPage.vue'),
+        },
+        {
+          path: 'avatar',
+          name: 'avatar',
+          component: () => import('@/features/avatar/page/AvatarPage.vue'),
+        },
+        {
+          path: 'badge',
+          name: 'badge',
+          component: () => import('@/features/badge/page/BadgePage.vue'),
+        },
+        {
+          path: 'breadcrumbs',
+          name: 'breadcrumbs',
+          component: () => import('@/features/breadcrumbs/page/BreadcrumbsPage.vue'),
+        },
       ],
     },
   ],
