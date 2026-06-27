@@ -5,103 +5,83 @@ import { rating_sizes, rating_color_classes, type UiRatingSizes, type UiRatingCo
 interface Props {
   _name?: string
   readonly?: boolean
-  color?: UiRatingColors | null
-  multiple_colors?: UiRatingColors[] | null
+  color?: UiRatingColors
+  multiple_colors?: UiRatingColors[]
   size?: UiRatingSizes
   half?: boolean
   quantity?: number
-  icon?: string | null
+  icon?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   _name: 'rating',
   readonly: false,
-  color: null,
-  multiple_colors: null,
+  color: 'warning',
+  multiple_colors: () => [],
   size: 'md',
   half: false,
   quantity: 5,
-  icon: null,
+  icon: 'mask-star',
 })
 
 const value = defineModel<number>('value', { default: 3 })
 
-const size_class = rating_sizes[props.size]
+const slots = computed(() => {
+  const count = props.half ? props.quantity * 2 : props.quantity
+  return Array.from({ length: count }, (_, i) => i)
+})
+
+const size_class = computed(() => rating_sizes[props.size])
+
+function star_index(idx: number): number {
+  return props.half ? Math.floor(idx / 2) : idx
+}
 
 function get_color_class(index: number): string {
-  if (props.multiple_colors && props.multiple_colors.length > 0) {
-    const color = props.multiple_colors[index % props.multiple_colors.length]
-    if (color && color in rating_color_classes) {
-      return rating_color_classes[color]
-    }
-    return rating_color_classes.warning
+  if (props.multiple_colors.length > 0) {
+    const color_key = props.multiple_colors[Math.min(index, props.multiple_colors.length - 1)] ?? 'warning'
+    return rating_color_classes[color_key] ?? 'bg-warning'
   }
-  if (props.color && props.color in rating_color_classes) {
-    return rating_color_classes[props.color]
-  }
-  return rating_color_classes.warning
+  return rating_color_classes[props.color] ?? 'bg-warning'
 }
 
-function get_mask_class(index: number): string {
-  if (props.icon) {
-    return `mask-${props.icon}`
-  }
-  const color = props.icon ? props.icon : 'mask-star-2'
-  return 'mask-star-2'
+function mask_class(): string[] {
+  return ['mask', props.icon]
 }
 
-const stars = computed(() => Array.from({ length: props.quantity }, (_, i) => i))
-
-function on_click(val: number): void {
+function select_rating(val: number): void {
   if (props.readonly) return
   value.value = val
 }
 
-function on_half_click(val: number): void {
-  if (props.readonly || !props.half) return
-  value.value = val - 0.5
-}
-
-function is_star_filled(index: number): boolean {
-  return value.value >= index + 1
-}
-
-function is_half_filled(index: number): boolean {
-  return props.half && value.value > index && value.value < index + 1
+function clear_rating(): void {
+  if (props.readonly) return
+  value.value = 0
 }
 </script>
 
 <template>
-  <div class="rating" :class="[size_class, half ? 'rating-half' : '']">
-    <template v-for="(_, i) in stars" :key="i">
+  <div class="rating" :class="[size_class, { 'rating-half': half }]">
+    <input
+      v-if="half"
+      type="radio"
+      :name="_name"
+      class="rating-hidden"
+      :checked="value === 0"
+      @click="clear_rating()"
+    />
+    <template v-for="(_, idx) in slots" :key="idx">
       <input
-        v-if="half"
-        class="mask mask-star-2 mask-half-1"
-        :class="[
-          props.multiple_colors ? '' : get_color_class(i),
-          is_star_filled(i) || is_half_filled(i) ? 'bg-warning' : '',
-        ]"
-        :style="props.multiple_colors && (is_star_filled(i) || is_half_filled(i)) ? `background-color: var(--color-${props.multiple_colors[i % props.multiple_colors.length] || 'warning'})` : ''"
-        type="radio"
-        :name="`${_name}-half-${i}`"
-        :disabled="readonly"
-        :checked="is_half_filled(i)"
-        :aria-label="`${i + 1} star half`"
-        @click="on_half_click(i + 1)"
-      />
-      <input
-        class="mask mask-star-2"
-        :class="[
-          is_star_filled(i) ? 'bg-warning' : 'bg-base-content/20',
-          props.multiple_colors && is_star_filled(i) ? '' : (is_star_filled(i) && props.color ? get_color_class(i) : ''),
-        ]"
-        :style="props.multiple_colors && is_star_filled(i) ? `background-color: var(--color-${props.multiple_colors[i % props.multiple_colors.length] || 'warning'})` : ''"
         type="radio"
         :name="_name"
+        :class="[
+          ...mask_class(),
+          get_color_class(star_index(idx)),
+          half && idx % 2 === 1 ? 'mask-half-2' : half ? 'mask-half-1' : '',
+        ]"
         :disabled="readonly"
-        :checked="is_star_filled(i)"
-        :aria-label="`${i + 1} star`"
-        @click="on_click(i + 1)"
+        :checked="half ? (idx + 1) / 2 === value : idx + 1 === value"
+        @change="select_rating(half ? (idx + 1) / 2 : idx + 1)"
       />
     </template>
   </div>
