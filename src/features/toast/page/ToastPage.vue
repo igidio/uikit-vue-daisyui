@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from '@/shared/stores/toast'
+import { useToast } from '@/shared/stores/toast.store'
 import UiButton from '@/shared/ui/ui-button/UiButton.vue'
 import type { MessageColors } from '@/shared/ui/ui-types'
 

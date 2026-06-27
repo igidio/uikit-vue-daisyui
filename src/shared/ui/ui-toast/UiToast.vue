@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useToast } from '@/shared/stores/toast'
-import type { UiToastItem } from '@/shared/stores/toast'
+import { useToast } from '@/shared/stores/toast.store'
+import type { UiToastItem } from '@/shared/stores/toast.store'
 
 const toast_service = useToast()
 

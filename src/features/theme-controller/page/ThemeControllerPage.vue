@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ThemeController from '@/shared/ui/theme-controller/ThemeController.vue'
 import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
+import UiThemeController from '@/shared/ui/ui-themecontroller/UiThemeController.vue';
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       <p class="text-base-content/70 mb-6">
         A toggle switch that changes the page theme to the specified value when checked.
       </p>
-      <ThemeController type="toggle" value="synthwave" />
+      <UiThemeController type="toggle" value="synthwave" />
     </div>
 
     <hr class="border-base-300" />
@@ -20,7 +20,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       <p class="text-base-content/70 mb-6">
         A checkbox that changes the page theme to the specified value when checked.
       </p>
-      <ThemeController type="checkbox" value="synthwave" />
+      <UiThemeController type="checkbox" value="synthwave" />
     </div>
 
     <hr class="border-base-300" />
@@ -30,7 +30,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       <p class="text-base-content/70 mb-6">
         A swap component with rotating sun/moon icons that toggles the theme.
       </p>
-      <ThemeController type="swap" value="synthwave" />
+      <UiThemeController type="swap" value="synthwave" />
     </div>
 
     <hr class="border-base-300" />
@@ -40,7 +40,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       <p class="text-base-content/70 mb-6">
         A toggle with sun and moon icons rendered inside the toggle track.
       </p>
-      <ThemeController type="icon_inside" value="synthwave" />
+      <UiThemeController type="icon_inside" value="synthwave" />
     </div>
 
     <hr class="border-base-300" />
@@ -52,7 +52,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       </p>
       <label class="flex cursor-pointer gap-2">
         <span class="label-text">Default</span>
-        <ThemeController type="toggle" value="synthwave" />
+        <UiThemeController type="toggle" value="synthwave" />
         <span class="label-text">Synthwave</span>
       </label>
     </div>
@@ -66,7 +66,7 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
       </p>
       <label class="flex cursor-pointer flex-row items-center gap-2">
         <UiIcon icon="sun" />
-        <ThemeController type="toggle" value="synthwave" />
+        <UiThemeController type="toggle" value="synthwave" />
         <UiIcon icon="moon" />
       </label>
     </div>

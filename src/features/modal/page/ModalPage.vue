@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useModal } from '@/shared/stores/modal'
+import { useModal } from '@/shared/stores/modal.store'
 import UiButton from '@/shared/ui/ui-button/UiButton.vue'
 
 const modal_service = useModal()

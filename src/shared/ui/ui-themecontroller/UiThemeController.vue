@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { useToggleTheme } from '@/shared/composables/useToggleTheme'
-import type { UiThemeControllerType } from './theme-controller-properties'
+import { computed } from 'vue'
+import { useThemeStore } from '@/shared/stores/theme.store'
+import type { UiThemeControllerType } from './ui-themecontroller.properties'
+import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
+
+const theme_store = useThemeStore()
 
 const props = withDefaults(defineProps<{
   type?: UiThemeControllerType
-  value?: string
 }>(), {
   type: 'toggle',
-  value: 'dark',
 })
 
-const { mode, toggle } = useToggleTheme()
-
-const checked = mode.value === 'dark'
+const model = computed({
+  get: () => theme_store.mode === 'dark',
+  set: () => theme_store.toggle(),
+})
 </script>
 
 <template>
@@ -20,33 +23,27 @@ const checked = mode.value === 'dark'
     v-if="type === 'toggle'"
     type="checkbox"
     class="toggle theme-controller"
-    :value="value"
-    :checked="checked"
-    @change="toggle"
+    v-model="model"
   />
 
   <input
     v-else-if="type === 'checkbox'"
     type="checkbox"
     class="checkbox theme-controller"
-    :value="value"
-    :checked="checked"
-    @change="toggle"
+    v-model="model"
   />
 
   <label v-else-if="type === 'swap'" class="swap swap-rotate">
     <input
       type="checkbox"
       class="theme-controller"
-      :value="value"
-      :checked="checked"
-      @change="toggle"
+      v-model="model"
     />
     <div class="swap-off">
-      <span class="icon-[ri--sun-fill]"></span>
+      <UiIcon icon="sun" />
     </div>
     <div class="swap-on">
-      <span class="icon-[ri--moon-fill]"></span>
+      <UiIcon icon="moon" />
     </div>
   </label>
 
@@ -54,11 +51,9 @@ const checked = mode.value === 'dark'
     <input
       type="checkbox"
       class="theme-controller"
-      :value="value"
-      :checked="checked"
-      @change="toggle"
+      v-model="model"
     />
-    <span class="icon-[ri--sun-fill]"></span>
-    <span class="icon-[ri--moon-fill]"></span>
+    <UiIcon icon="sun" />
+    <UiIcon icon="moon" />
   </label>
 </template>

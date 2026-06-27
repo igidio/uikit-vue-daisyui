@@ -1,8 +1,9 @@
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export type ThemeMode = 'light' | 'dark'
 
-function getInitialMode(): ThemeMode {
+function get_initial_mode(): ThemeMode {
   const stored = localStorage.getItem('color-theme')
   if (stored === 'light' || stored === 'dark') {
     return stored
@@ -10,24 +11,22 @@ function getInitialMode(): ThemeMode {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-const mode = ref<ThemeMode>(getInitialMode())
+export const useThemeStore = defineStore('theme', () => {
+  const mode = ref<ThemeMode>(get_initial_mode())
 
-export function useToggleTheme() {
-  function initialize() {
+  function initialize(): void {
     if (
       localStorage.getItem('color-theme') === 'dark' ||
       (!('color-theme' in localStorage) &&
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.documentElement.setAttribute('data-theme', 'dark')
-      mode.value = 'dark'
     } else {
       document.documentElement.setAttribute('data-theme', 'light')
-      mode.value = 'light'
     }
   }
 
-  function toggle() {
+  function toggle(): void {
     const stored = localStorage.getItem('color-theme')
     if (stored) {
       if (stored === 'light') {
@@ -53,4 +52,4 @@ export function useToggleTheme() {
   }
 
   return { mode, initialize, toggle }
-}
+})

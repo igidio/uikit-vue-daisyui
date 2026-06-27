@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDrawer } from '@/shared/stores/drawer'
+import { useDrawer } from '@/shared/stores/drawer.store'
 import UiButton from '@/shared/ui/ui-button/UiButton.vue'
 
 const drawer_service = useDrawer()

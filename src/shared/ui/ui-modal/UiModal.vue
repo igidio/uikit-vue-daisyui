@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useModal } from '@/shared/stores/modal'
-import { ui_modal_sizes } from '@/shared/stores/modal'
+import { useModal } from '@/shared/stores/modal.store'
+import { ui_modal_sizes } from '@/shared/stores/modal.store'
 
 const modal_service = useModal()
 

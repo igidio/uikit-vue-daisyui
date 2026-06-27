@@ -100,11 +100,11 @@ export function useModal() {
     is_open,
     show_content,
     set_element,
+    set_content,
     configure,
     open,
     close,
     toggle,
-    set_content,
     open_with_content,
   }
 }
