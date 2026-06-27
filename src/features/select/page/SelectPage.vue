@@ -1,47 +1,99 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import UiSelect from '@/shared/ui/ui-select/UiSelect.vue'
-import type { SelectOption } from '@/shared/ui/ui-select/UiSelect.vue'
+import type { SelectOption, SelectSize } from '@/shared/ui/ui-select/UiSelect.vue'
+import type { UiColors } from '@/shared/ui/ui-types'
 
-const select_value = ref('')
+interface SelectDemo {
+  label: string
+  color?: UiColors
+  placeholder: string
+  disabled?: boolean
+  options: SelectOption[]
+  value?: string
+}
 
-const options: SelectOption[] = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Orange', value: 'orange' },
-  { label: 'Mango', value: 'mango' },
+const colors: UiColors[] = [
+  'neutral', 'primary', 'secondary', 'accent',
+  'info', 'success', 'warning', 'error', 'ghost',
+]
+
+const defaultOptions: SelectOption[] = [
+  { label: 'Option A', value: 'a' },
+  { label: 'Option B', value: 'b' },
+  { label: 'Option C', value: 'c' },
+]
+
+const demos: SelectDemo[] = [
+  { label: 'Default Select', placeholder: 'Pick an option...', options: defaultOptions },
+  { label: 'Disabled', color: 'primary', placeholder: 'Disabled select', options: defaultOptions, disabled: true },
+  { label: 'With Preselected', color: 'secondary', placeholder: 'Choose...', options: defaultOptions, value: 'b' },
+]
+
+const colorDemos: SelectDemo[] = colors.map((c) => ({
+  label: `Color: ${c}`,
+  color: c,
+  placeholder: `select-${c}`,
+  options: defaultOptions,
+}))
+
+const sizes: { label: string; size: SelectSize }[] = [
+  { label: 'Extra Small', size: 'xs' },
+  { label: 'Small', size: 'sm' },
+  { label: 'Medium (default)', size: 'md' },
+  { label: 'Large', size: 'lg' },
+  { label: 'Extra Large', size: 'xl' },
 ]
 </script>
 
 <template>
-  <section class="space-y-12">
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Default Select</h2>
-      <p class="text-base-content/70 mb-6">A simple select dropdown.</p>
-      <div class="max-w-xs">
-        <UiSelect v-model="select_value" :options="options" placeholder="Pick a fruit" />
+  <div class="p-8 w-full mx-auto space-y-10">
+    <h1 class="text-2xl font-bold">Select Component</h1>
+
+    <!-- Basic demos -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Variants</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div v-for="(demo, index) in demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiSelect
+            :options="demo.options"
+            :placeholder="demo.placeholder"
+            :color="demo.color"
+            :disabled="demo.disabled ?? false"
+            :model-value="demo.value ?? undefined"
+          />
+        </div>
       </div>
-      <p class="mt-2 text-sm">Selected: {{ select_value || 'none' }}</p>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Available sizes.</p>
-      <div class="flex flex-col gap-4 max-w-xs">
-        <UiSelect v-for="size in ['xs','sm','md','lg','xl']" :key="size" :size="size" :options="options" :placeholder="`Size: ${size}`" />
+    <!-- Colors showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Colors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div v-for="(demo, index) in colorDemos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiSelect
+            :options="demo.options"
+            :color="demo.color"
+            :placeholder="demo.placeholder"
+          />
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">Select with different colors.</p>
-      <div class="flex flex-col gap-4 max-w-xs">
-        <UiSelect v-for="color in ['primary','secondary','accent','info','success','warning','error']" :key="color" :color="color" :options="options" :placeholder="`Color: ${color}`" />
+    <!-- Sizes showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+      <div class="flex flex-col gap-4">
+        <div v-for="s in sizes" :key="s.size">
+          <p class="text-sm font-medium mb-2">{{ s.label }}</p>
+          <UiSelect :options="defaultOptions" :placeholder="`select-${s.size}`" :size="s.size" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>

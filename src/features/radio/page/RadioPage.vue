@@ -2,46 +2,107 @@
 import { ref } from 'vue'
 import UiRadio from '@/shared/ui/ui-radio/UiRadio.vue'
 import UiRadioItem from '@/shared/ui/ui-radio/UiRadioItem.vue'
+import type { UiColors } from '@/shared/ui/ui-types'
+import type { SelectSize } from '@/shared/ui/ui-select/UiSelect.vue'
 
-const radio_value = ref('apple')
+interface RadioDemo {
+  label: string
+  color?: UiColors
+  disabled?: boolean
+}
+
+const colors: UiColors[] = [
+  'neutral', 'primary', 'secondary', 'accent',
+  'info', 'success', 'warning', 'error',
+]
+
+const basic_demos: RadioDemo[] = [
+  { label: 'Default' },
+  { label: 'Disabled', disabled: true },
+]
+
+const color_demos: RadioDemo[] = colors.map((c) => ({
+  label: `Color: ${c}`,
+  color: c,
+}))
+
+const sizes: { label: string; size: SelectSize }[] = [
+  { label: 'Extra Small', size: 'xs' },
+  { label: 'Small', size: 'sm' },
+  { label: 'Medium (default)', size: 'md' },
+  { label: 'Large', size: 'lg' },
+  { label: 'Extra Large', size: 'xl' },
+]
+
+const interactive_value = ref('option1')
 </script>
 
 <template>
-  <section class="space-y-12">
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Default Radio</h2>
-      <p class="text-base-content/70 mb-6">A simple radio group.</p>
-      <UiRadio v-model="radio_value" name="fruit">
-        <UiRadioItem value="apple">Apple</UiRadioItem>
-        <UiRadioItem value="banana">Banana</UiRadioItem>
-        <UiRadioItem value="orange">Orange</UiRadioItem>
-        <UiRadioItem value="mango">Mango</UiRadioItem>
-      </UiRadio>
-      <p class="mt-4 text-sm">Selected: {{ radio_value }}</p>
-    </div>
+  <div class="p-8 max-w-2xl mx-auto space-y-10">
+    <h1 class="text-2xl font-bold">Radio Component</h1>
+
+    <!-- Basic demos -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Variants</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-for="(demo, index) in basic_demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiRadio :name="demo.label" :disabled="demo.disabled ?? false">
+            <UiRadioItem value="option1">Option 1</UiRadioItem>
+            <UiRadioItem value="option2">Option 2</UiRadioItem>
+            <UiRadioItem value="option3">Option 3</UiRadioItem>
+          </UiRadio>
+        </div>
+      </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Available sizes.</p>
-      <div class="flex flex-col gap-4">
-        <UiRadio v-for="size in ['xs','sm','md','lg','xl']" :key="size" :size="size" name="size-demo" :model-value="'md'">
-          <UiRadioItem value="md">Size: {{ size }}</UiRadioItem>
-        </UiRadio>
+    <!-- Colors showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Colors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-for="(demo, index) in color_demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiRadio :name="demo.label" :color="demo.color">
+            <UiRadioItem value="option1">Option 1</UiRadioItem>
+            <UiRadioItem value="option2">Option 2</UiRadioItem>
+            <UiRadioItem value="option3">Option 3</UiRadioItem>
+          </UiRadio>
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">Radio with different colors.</p>
+    <!-- Sizes showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Sizes</h2>
       <div class="flex flex-col gap-4">
-        <UiRadio v-for="color in ['primary','secondary','accent','info','success','warning','error']" :key="color" :color="color" name="color-demo" :model-value="'color'">
-          <UiRadioItem value="color">Color: {{ color }}</UiRadioItem>
+        <div v-for="s in sizes" :key="s.size">
+          <p class="text-sm font-medium mb-2">{{ s.label }}</p>
+          <UiRadio :name="`demo-${s.size}`" :size="s.size">
+            <UiRadioItem value="a">A</UiRadioItem>
+            <UiRadioItem value="b">B</UiRadioItem>
+            <UiRadioItem value="c">C</UiRadioItem>
+          </UiRadio>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-base-300" />
+
+    <!-- Interactive example -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Interactive</h2>
+      <div>
+        <p class="text-sm font-medium mb-2">Selected value: {{ interactive_value }}</p>
+        <UiRadio name="interactive" v-model="interactive_value">
+          <UiRadioItem value="option1">Option 1</UiRadioItem>
+          <UiRadioItem value="option2">Option 2</UiRadioItem>
+          <UiRadioItem value="option3">Option 3</UiRadioItem>
         </UiRadio>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
