@@ -16,7 +16,6 @@ const checked = mode.value === 'dark'
 </script>
 
 <template>
-  <!-- Toggle switch -->
   <input
     v-if="type === 'toggle'"
     type="checkbox"
@@ -26,7 +25,6 @@ const checked = mode.value === 'dark'
     @change="toggle"
   />
 
-  <!-- Checkbox -->
   <input
     v-else-if="type === 'checkbox'"
     type="checkbox"
@@ -36,7 +34,6 @@ const checked = mode.value === 'dark'
     @change="toggle"
   />
 
-  <!-- Swap with rotating sun/moon icons -->
   <label v-else-if="type === 'swap'" class="swap swap-rotate">
     <input
       type="checkbox"
@@ -53,7 +50,6 @@ const checked = mode.value === 'dark'
     </div>
   </label>
 
-  <!-- Toggle with icons inside -->
   <label v-else-if="type === 'icon_inside'" class="toggle text-base-content text-xs">
     <input
       type="checkbox"

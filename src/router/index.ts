@@ -193,6 +193,41 @@ const router = createRouter({
           name: 'tooltip',
           component: () => import('@/features/tooltip/page/TooltipPage.vue'),
         },
+        {
+          path: 'aura',
+          name: 'aura',
+          component: () => import('@/features/aura/page/AuraPage.vue'),
+        },
+        {
+          path: 'form',
+          name: 'form',
+          component: () => import('@/features/form/page/FormPage.vue'),
+        },
+        {
+          path: 'pagination',
+          name: 'pagination',
+          component: () => import('@/features/pagination/page/PaginationPage.vue'),
+        },
+        {
+          path: 'radialprogress',
+          name: 'radialprogress',
+          component: () => import('@/features/radialprogress/page/RadialprogressPage.vue'),
+        },
+        {
+          path: 'rating',
+          name: 'rating',
+          component: () => import('@/features/rating/page/RatingPage.vue'),
+        },
+        {
+          path: 'table',
+          name: 'table',
+          component: () => import('@/features/table/page/TablePage.vue'),
+        },
+        {
+          path: 'theme-controller',
+          name: 'theme-controller',
+          component: () => import('@/features/theme-controller/page/ThemeControllerPage.vue'),
+        },
       ],
     },
   ],
