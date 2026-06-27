@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSlots, type VNode } from 'vue'
 import UiAccordionItem from './UiAccordionItem.vue'
+import { use_slot_children } from '@/shared/composables/use_slot_children'
 
 const props = withDefaults(
   defineProps<{
@@ -25,24 +26,15 @@ interface ExtractedItem {
   content_fn: (() => VNode[]) | null
 }
 
-const items: ExtractedItem[] = (() => {
-  const children = slots.default?.() ?? []
-  return children
-    .filter((v): v is VNode => typeof v !== 'string' && v != null)
-    .filter((v) => v.type === UiAccordionItem)
-    .map((v) => {
-      const p = v.props as Record<string, any> | undefined
-      const child_slots = (v as any).children as
-        | { default?: () => VNode[] }
-        | undefined
-      return {
-        value: p?.value ?? '',
-        title: p?.title ?? '',
-        content_fn: child_slots?.default ?? null,
-      }
-    })
-    .filter((item) => item.value !== '')
-})()
+const items: ExtractedItem[] = use_slot_children(slots, UiAccordionItem, (v) => {
+  const p = v.props as Record<string, any> | undefined
+  const child_slots = (v as any).children
+  return {
+    value: p?.value ?? '',
+    title: p?.title ?? '',
+    content_fn: child_slots?.default ?? null,
+  }
+}).filter((item) => item.value !== '')
 
 const item_classes: string = (() => {
   const c = [
