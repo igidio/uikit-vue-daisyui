@@ -37,11 +37,12 @@ const carousel_classes: string = (() => {
   const c: string[] = ['carousel']
   c.push(carousel_snaps[props.snap as UiCarouselSnap])
   if (props.vertical) c.push('carousel-vertical')
+  if (props.indicator || props.prevnext) c.push('w-full')
   return c.join(' ')
 })()
 
 function item_id(index: number): string {
-  return `item-${index}`
+  return `carousel-slide-${index}`
 }
 
 function prev_index(index: number): number {
