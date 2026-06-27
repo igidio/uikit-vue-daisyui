@@ -25,6 +25,7 @@ export const navigationOptions: NavigationOption[] = [
   { label: 'Hover Gallery', path: 'hovergallery', documentation: 'https://daisyui.com/components/hover-gallery/' },
   { label: 'Icon', path: 'icon', documentation: 'https://daisyui.com/components/icon/' },
   { label: 'Input', path: 'input', documentation: 'https://daisyui.com/components/input/' },
+  { label: 'Input File', path: 'inputfile', documentation: 'https://daisyui.com/components/file-input/' },
   { label: 'Kbd', path: 'kbd', documentation: 'https://daisyui.com/components/kbd/' },
   { label: 'Loading', path: 'loading', documentation: 'https://daisyui.com/components/loading/' },
   { label: 'Modal', path: 'modal', documentation: 'https://daisyui.com/components/modal/' },

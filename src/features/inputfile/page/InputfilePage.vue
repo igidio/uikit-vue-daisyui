@@ -1,34 +1,119 @@
 <script setup lang="ts">
 import UiInputfile from '@/shared/ui/ui-inputfile/UiInputfile.vue'
+import type { InputfileSize } from '@/shared/ui/ui-inputfile/ui-inputfile-properties'
+
+const colors = [
+  'neutral', 'primary', 'secondary', 'accent',
+  'info', 'success', 'warning', 'error', 'ghost',
+] as const
+
+const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 </script>
 
 <template>
   <section class="space-y-12">
+    <!-- Default -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Default File Input</h2>
-      <p class="text-base-content/70 mb-6">A simple file input.</p>
-      <div class="max-w-sm">
+      <h2 class="text-2xl font-bold mb-2">File Input</h2>
+      <p class="text-base-content/70 mb-6">
+        El componente <code>ui-inputfile</code> es un campo de selección de archivos con estilos
+        DaisyUI.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
         <UiInputfile />
       </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Sizes -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Available sizes.</p>
+      <p class="text-base-content/70 mb-6">
+        Tamaños disponibles: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> y
+        <code>xl</code>.
+      </p>
       <div class="flex flex-col gap-4 max-w-sm">
-        <UiInputfile v-for="size in ['xs','sm','md','lg','xl']" :key="size" :size="size" />
+        <div v-for="s in sizes" :key="s" class="flex flex-col gap-1">
+          <span class="text-xs text-base-content/60">Size: {{ s }}</span>
+          <UiInputfile :size="s" />
+        </div>
       </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Colors -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">File input with different colors.</p>
+      <p class="text-base-content/70 mb-6">
+        Usa el prop <code>color</code> para cambiar entre los colores disponibles.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg">
+        <div v-for="c in colors" :key="c" class="flex flex-col gap-1">
+          <span class="text-xs text-base-content/60">Color: {{ c }}</span>
+          <UiInputfile :color="c" />
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Filter by file type -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Filter by file type</h2>
+      <p class="text-base-content/70 mb-6">
+        Usa <code>accept</code> para restringir los tipos de archivo permitidos.
+      </p>
       <div class="flex flex-col gap-4 max-w-sm">
-        <UiInputfile v-for="color in ['neutral','primary','secondary','accent','info','success','warning','error','ghost']" :key="color" :color="color" />
+        <div class="flex flex-col gap-1">
+          <span class="text-xs text-base-content/60">Images only</span>
+          <UiInputfile accept="image/*" />
+        </div>
+        <div class="flex flex-col gap-1">
+          <span class="text-xs text-base-content/60">PDF only</span>
+          <UiInputfile accept=".pdf" />
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Multiple -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Multiple files</h2>
+      <p class="text-base-content/70 mb-6">
+        Usa <code>:multiple="true"</code> para permitir la selección de múltiples archivos.
+      </p>
+      <div class="flex flex-col gap-1 max-w-sm">
+        <span class="text-xs text-base-content/60">Multiple files</span>
+        <UiInputfile :multiple="true" />
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Disabled -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Disabled</h2>
+      <p class="text-base-content/70 mb-6">
+        El input se puede deshabilitar con el prop <code>disabled</code>.
+      </p>
+      <div class="flex flex-col gap-1 max-w-sm">
+        <span class="text-xs text-base-content/60">Disabled</span>
+        <UiInputfile disabled />
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Combined -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Combined</h2>
+      <p class="text-base-content/70 mb-6">Todas las propiedades combinadas.</p>
+      <div class="flex flex-col gap-1 max-w-sm">
+        <span class="text-xs text-base-content/60">Avatar upload</span>
+        <UiInputfile color="primary" size="lg" accept="image/*" />
       </div>
     </div>
   </section>
