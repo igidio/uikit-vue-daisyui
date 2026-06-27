@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-import { inputfile_sizes, type InputfileSize } from './ui-inputfile-properties'
+import { inputfile_sizes, inputfile_color_classes, type InputfileSize } from './ui-inputfile-properties'
 
 interface Props {
   accept?: string
   multiple?: boolean
-  color?: UiColors
+  color?: keyof typeof inputfile_color_classes
   size?: InputfileSize
   disabled?: boolean
 }
@@ -23,9 +22,9 @@ const model_value = defineModel<string | null>({ default: null })
 const inputfile_classes: string = (() => {
   const c: string[] = ['file-input', 'w-full']
   if (props.color) {
-    c.push(`file-input-${props.color}`)
+    c.push(inputfile_color_classes[props.color])
   }
-  c.push(inputfile_sizes[props.size as InputfileSize] ?? 'file-input-md')
+  c.push(inputfile_sizes[props.size ?? 'md'])
   return c.filter(Boolean).join(' ')
 })()
 

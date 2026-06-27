@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-
-type ToggleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-const toggle_sizes: Record<ToggleSize, string> = {
-  xs: 'toggle-xs',
-  sm: 'toggle-sm',
-  md: 'toggle-md',
-  lg: 'toggle-lg',
-  xl: 'toggle-xl',
-}
+import type { ToggleSize } from './ui-toggle-properties'
+import { toggle_sizes, toggle_color_classes } from './ui-toggle-properties'
 
 interface Props {
-  color?: UiColors
+  color?: keyof typeof toggle_color_classes
   size?: ToggleSize
   disabled?: boolean
 }
@@ -28,9 +19,9 @@ const model_value = defineModel<boolean>({ default: false })
 const toggle_classes: string = (() => {
   const c: string[] = ['toggle']
   if (props.color) {
-    c.push(`toggle-${props.color}`)
+    c.push(toggle_color_classes[props.color])
   }
-  c.push(toggle_sizes[props.size as ToggleSize] ?? 'toggle-md')
+  c.push(toggle_sizes[props.size ?? 'md'])
   return c.filter(Boolean).join(' ')
 })()
 </script>

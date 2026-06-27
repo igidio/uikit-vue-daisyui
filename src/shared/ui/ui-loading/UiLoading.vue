@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-import { loading_types, loading_sizes, type UiLoadingTypes, type UiLoadingSizes } from './ui-loading-properties'
+import { loading_types, loading_sizes, loading_color_classes, type UiLoadingTypes, type UiLoadingSizes } from './ui-loading-properties'
 
 interface Props {
   type?: UiLoadingTypes
   size?: UiLoadingSizes
-  color?: UiColors | null
+  color?: keyof typeof loading_color_classes | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,10 +15,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const loading_classes: string = (() => {
   const c: string[] = ['loading']
-  c.push(loading_types[props.type as UiLoadingTypes])
-  c.push(loading_sizes[props.size as UiLoadingSizes])
+  c.push(loading_types[props.type ?? 'spinner'])
+  c.push(loading_sizes[props.size ?? 'md'])
   if (props.color) {
-    c.push(`text-${props.color}`)
+    c.push(loading_color_classes[props.color])
   }
   return c.filter(Boolean).join(' ')
 })()

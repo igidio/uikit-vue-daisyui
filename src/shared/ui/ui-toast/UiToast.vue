@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useToast } from '@/shared/stores/toast.store'
 import type { UiToastItem } from '@/shared/stores/toast.store'
+import { toast_color_classes } from './ui-toast-properties'
 
 const toast_service = useToast()
 
@@ -16,7 +17,8 @@ const toast_groups = computed<[string, UiToastItem[]][]>(() => {
 })
 
 function alert_class(type: string): string {
-  return ['alert', `alert-${type}`].join(' ')
+  const color_class = toast_color_classes[type as keyof typeof toast_color_classes]
+  return ['alert', color_class ?? 'alert-info'].join(' ')
 }
 </script>
 

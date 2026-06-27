@@ -1,22 +1,13 @@
 <script setup lang="ts">
 import { computed, useSlots, type VNode } from 'vue'
-import type { UiColors } from '@/shared/ui/ui-types'
 import { use_slot_children } from '@/shared/composables/useSlotChildren'
 import UiRadioItem from './UiRadioItem.vue'
-
-type RadioSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-const radio_sizes: Record<RadioSize, string> = {
-  xs: 'radio-xs',
-  sm: 'radio-sm',
-  md: 'radio-md',
-  lg: 'radio-lg',
-  xl: 'radio-xl',
-}
+import type { RadioSize } from './ui-radio-properties'
+import { radio_sizes, radio_color_classes } from './ui-radio-properties'
 
 interface Props {
   name?: string
-  color?: UiColors
+  color?: keyof typeof radio_color_classes
   size?: RadioSize
   disabled?: boolean
 }
@@ -51,9 +42,9 @@ const items = computed<ExtractedItem[]>(() =>
 const radio_classes: string = (() => {
   const c: string[] = ['radio']
   if (props.color) {
-    c.push(`radio-${props.color}`)
+    c.push(radio_color_classes[props.color])
   }
-  c.push(radio_sizes[props.size as RadioSize] ?? 'radio-md')
+  c.push(radio_sizes[props.size ?? 'md'])
   return c.join(' ')
 })()
 </script>

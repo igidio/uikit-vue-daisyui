@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-
-type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-type InputType = 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'date' | 'datetime-local' | 'month' | 'time' | 'week'
-
-const input_sizes: Record<InputSize, string> = {
-  xs: 'input-xs',
-  sm: 'input-sm',
-  md: 'input-md',
-  lg: 'input-lg',
-  xl: 'input-xl',
-}
+import type { InputSize, InputType } from './ui-input-properties'
+import { input_sizes, input_color_classes } from './ui-input-properties'
 
 interface Props {
   placeholder?: string
   type?: InputType
-  color?: UiColors
+  color?: keyof typeof input_color_classes
   size?: InputSize
   readonly?: boolean
   disabled?: boolean
@@ -35,9 +25,9 @@ const model_value = defineModel<string | number>({ default: '' })
 const input_classes: string = (() => {
   const c: string[] = ['input', 'w-full']
   if (props.color) {
-    c.push(`input-${props.color}`)
+    c.push(input_color_classes[props.color])
   }
-  c.push(input_sizes[props.size as InputSize] ?? 'input-md')
+  c.push(input_sizes[props.size ?? 'md'])
   return c.filter(Boolean).join(' ')
 })()
 </script>

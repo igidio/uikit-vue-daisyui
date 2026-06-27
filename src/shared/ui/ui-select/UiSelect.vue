@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-
-export type SelectSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-export interface SelectOption {
-  label: string
-  value: any
-}
-
-const select_sizes: Record<SelectSize, string> = {
-  xs: 'select-xs',
-  sm: 'select-sm',
-  md: 'select-md',
-  lg: 'select-lg',
-  xl: 'select-xl',
-}
+import type { SelectSize } from './ui-select-properties'
+import { select_sizes, select_color_classes } from './ui-select-properties'
+import type { SelectOption } from './ui-select-properties'
 
 interface Props {
   options: SelectOption[]
   placeholder?: string
-  color?: UiColors
+  color?: keyof typeof select_color_classes
   size?: SelectSize
   disabled?: boolean
 }
@@ -36,9 +23,9 @@ const model_value = defineModel<string | number>({ default: '' })
 const select_classes: string = (() => {
   const c: string[] = ['select', 'w-full']
   if (props.color) {
-    c.push(`select-${props.color}`)
+    c.push(select_color_classes[props.color])
   }
-  c.push(select_sizes[props.size as SelectSize] ?? 'select-md')
+  c.push(select_sizes[props.size ?? 'md'])
   return c.filter(Boolean).join(' ')
 })()
 </script>

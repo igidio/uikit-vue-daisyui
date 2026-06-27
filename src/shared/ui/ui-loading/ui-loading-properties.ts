@@ -20,3 +20,15 @@ export const loading_sizes: Record<UiLoadingSizes, string> = {
   lg: 'loading-lg',
   xl: 'loading-xl',
 }
+
+export const loading_color_classes: Record<UiColors, string> = {
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+  accent: 'text-accent',
+  neutral: 'text-neutral',
+  info: 'text-info',
+  success: 'text-success',
+  warning: 'text-warning',
+  error: 'text-error',
+  ghost: 'text-ghost',
+}

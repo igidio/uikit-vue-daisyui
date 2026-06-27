@@ -1,19 +1,10 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-
-type TextareaSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-const textarea_sizes: Record<TextareaSize, string> = {
-  xs: 'textarea-xs',
-  sm: 'textarea-sm',
-  md: 'textarea-md',
-  lg: 'textarea-lg',
-  xl: 'textarea-xl',
-}
+import type { TextareaSize } from './ui-textarea-properties'
+import { textarea_sizes, textarea_color_classes } from './ui-textarea-properties'
 
 interface Props {
   placeholder?: string
-  color?: UiColors
+  color?: keyof typeof textarea_color_classes
   size?: TextareaSize
   rows?: number
   resizable?: boolean
@@ -36,9 +27,9 @@ const model_value = defineModel<string>({ default: '' })
 const textarea_classes: string = (() => {
   const c: string[] = ['textarea', 'w-full']
   if (props.color) {
-    c.push(`textarea-${props.color}`)
+    c.push(textarea_color_classes[props.color])
   }
-  c.push(textarea_sizes[props.size as TextareaSize] ?? 'textarea-md')
+  c.push(textarea_sizes[props.size ?? 'md'])
   if (!props.resizable) {
     c.push('resize-none')
   }

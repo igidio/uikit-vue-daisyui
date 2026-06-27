@@ -1,21 +1,12 @@
 <script setup lang="ts">
-import type { UiColors } from '@/shared/ui/ui-types'
-
-type RangeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-const range_sizes: Record<RangeSize, string> = {
-  xs: 'range-xs',
-  sm: 'range-sm',
-  md: 'range-md',
-  lg: 'range-lg',
-  xl: 'range-xl',
-}
+import type { RangeSize } from './ui-range-properties'
+import { range_sizes, range_color_classes } from './ui-range-properties'
 
 interface Props {
   min?: number
   max?: number
   step?: number
-  color?: UiColors
+  color?: keyof typeof range_color_classes
   size?: RangeSize
   disabled?: boolean
 }
@@ -34,9 +25,9 @@ const model_value = defineModel<number>({ default: 0 })
 const range_classes: string = (() => {
   const c: string[] = ['range']
   if (props.color) {
-    c.push(`range-${props.color}`)
+    c.push(range_color_classes[props.color])
   }
-  c.push(range_sizes[props.size as RangeSize] ?? 'range-md')
+  c.push(range_sizes[props.size ?? 'md'])
   return c.filter(Boolean).join(' ')
 })()
 </script>
