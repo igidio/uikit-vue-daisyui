@@ -2,52 +2,133 @@
 import { ref } from 'vue'
 import UiCheckbox from '@/shared/ui/ui-checkbox/UiCheckbox.vue'
 import type { CheckboxOption } from '@/shared/ui/ui-checkbox/UiCheckbox.vue'
+import type { UiColors } from '@/shared/ui/ui-types'
+import type { CheckboxSize } from '@/shared/ui/ui-checkbox/ui-checkbox-properties'
 
-const checkbox_value = ref<string[]>(['apple'])
+const selected_values = ref<any[]>(['option1'])
 
-const fruit_options: CheckboxOption[] = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Orange', value: 'orange' },
-  { label: 'Mango', value: 'mango' },
+interface CheckboxDemo {
+  label: string
+  color?: UiColors
+  size?: string
+  disabled?: boolean
+  data: CheckboxOption[]
+}
+
+const colors: UiColors[] = [
+  'neutral', 'primary', 'secondary', 'accent',
+  'info', 'success', 'warning', 'error',
+]
+
+const basic_demos: CheckboxDemo[] = [
+  {
+    label: 'Default',
+    data: [
+      { label: 'Option A', value: 'a' },
+      { label: 'Option B', value: 'b' },
+      { label: 'Option C', value: 'c' },
+    ],
+  },
+  {
+    label: 'Disabled',
+    disabled: true,
+    data: [
+      { label: 'Option A', value: 'a' },
+      { label: 'Option B', value: 'b' },
+    ],
+  },
+]
+
+const color_demos: CheckboxDemo[] = colors.map((c) => ({
+  label: `Color: ${c}`,
+  color: c,
+  data: [
+    { label: 'Option 1', value: 1 },
+    { label: 'Option 2', value: 2 },
+    { label: 'Option 3', value: 3 },
+  ],
+}))
+
+const sizes: { label: string; size: string }[] = [
+  { label: 'Extra Small', size: 'xs' },
+  { label: 'Small', size: 'sm' },
+  { label: 'Medium (default)', size: 'md' },
+  { label: 'Large', size: 'lg' },
+  { label: 'Extra Large', size: 'xl' },
+]
+
+const size_data: CheckboxOption[] = [
+  { label: 'A', value: 'a' },
+  { label: 'B', value: 'b' },
 ]
 </script>
 
 <template>
-  <section class="space-y-12">
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Default Checkbox</h2>
-      <p class="text-base-content/70 mb-6">A simple checkbox group.</p>
-      <UiCheckbox v-model="checkbox_value" :data="fruit_options" />
-      <p class="mt-4 text-sm">Selected: {{ checkbox_value.join(', ') || 'none' }}</p>
-    </div>
+  <div class="p-8 max-w-2xl mx-auto space-y-10">
+    <h1 class="text-2xl font-bold">Checkbox Component</h1>
 
-    <hr class="border-base-300" />
-
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Available sizes.</p>
-      <div class="flex flex-col gap-4">
-        <UiCheckbox v-for="size in ['xs','sm','md','lg','xl']" :key="size" :size="size" :data="[{ label: `Size: ${size}`, value: size }]" />
+    <!-- Basic demos -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Variants</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-for="(demo, index) in basic_demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiCheckbox
+            :name="demo.label"
+            :data="demo.data"
+            :disabled="demo.disabled ?? false"
+          />
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">Checkbox with different colors.</p>
-      <div class="flex flex-col gap-4">
-        <UiCheckbox v-for="color in ['primary','secondary','accent','info','success','warning','error']" :key="color" :color="color" :data="[{ label: `Color: ${color}`, value: color }]" :model-value="[color]" />
+    <!-- Colors showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Colors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-for="(demo, index) in color_demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiCheckbox
+            :name="demo.label"
+            :color="demo.color"
+            :data="demo.data"
+          />
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Disabled</h2>
-      <p class="text-base-content/70 mb-6">Disabled checkbox group.</p>
-      <UiCheckbox disabled :data="fruit_options" :model-value="['apple']" />
-    </div>
-  </section>
+    <!-- Sizes showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+      <div class="flex flex-col gap-4">
+        <div v-for="s in sizes" :key="s.size">
+          <p class="text-sm font-medium mb-2">{{ s.label }}</p>
+          <UiCheckbox name="demo" :size="s.size as CheckboxSize" :data="size_data" />
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-base-300" />
+
+    <!-- Interactive example -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Interactive</h2>
+      <div>
+        <p class="text-sm font-medium mb-2">Selected: {{ selected_values }}</p>
+        <UiCheckbox
+          name="interactive"
+          v-model="selected_values"
+          :data="[
+            { label: 'Option 1', value: 'option1' },
+            { label: 'Option 2', value: 'option2' },
+            { label: 'Option 3', value: 'option3' },
+          ]"
+        />
+      </div>
+    </section>
+  </div>
 </template>
