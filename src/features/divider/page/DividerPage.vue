@@ -23,7 +23,7 @@ import UiDivider from '@/shared/ui/ui-divider/UiDivider.vue'
     <div>
       <h2 class="text-2xl font-bold mb-2">Divider with Text</h2>
       <p class="text-base-content/70 mb-6">
-        Use the <code>text</code> prop to display a label in the middle.
+        Use the <code>text</code> input to display a label in the middle.
       </p>
       <div>
         <div class="bg-base-200 rounded-box p-4">Content above</div>
@@ -34,11 +34,45 @@ import UiDivider from '@/shared/ui/ui-divider/UiDivider.vue'
 
     <hr class="border-base-300" />
 
+    <!-- Orientation: Vertical -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Vertical Orientation</h2>
+      <p class="text-base-content/70 mb-6">
+        Set <code>orientation="vertical"</code> to create a vertical divider line between horizontal
+        elements. Use a flex container with <code>flex-row</code> to see the effect.
+      </p>
+      <div class="flex flex-row items-stretch">
+        <div class="bg-base-200 rounded-box p-4 flex-1 h-30">Section A</div>
+        <UiDivider orientation="vertical" />
+        <div class="bg-base-200 rounded-box p-4 flex-1 h-30">Section B</div>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Orientation: Vertical with Text -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Vertical Divider with Text</h2>
+      <p class="text-base-content/70 mb-6">Vertical divider with a label in the middle.</p>
+      <div class="flex flex-row items-stretch">
+        <div class="bg-base-200 rounded-box p-4 flex-1">Left content</div>
+        <UiDivider orientation="vertical" text="VS" />
+        <div class="bg-base-200 rounded-box p-4 flex-1">Right content</div>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
     <!-- Colors -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">Dividers in daisyUI semantic colors.</p>
-      <div class="flex flex-col gap-4">
+      <p class="text-base-content/70 mb-6">Dividers support all daisyUI semantic colors.</p>
+      <div class="space-y-4">
+        <div>
+          <div class="bg-base-200 rounded-box p-4">Content A</div>
+          <UiDivider color="neutral" text="Neutral" />
+          <div class="bg-base-200 rounded-box p-4">Content B</div>
+        </div>
         <div>
           <div class="bg-base-200 rounded-box p-4">Content A</div>
           <UiDivider color="primary" text="Primary" />
@@ -83,7 +117,7 @@ import UiDivider from '@/shared/ui/ui-divider/UiDivider.vue'
     <div>
       <h2 class="text-2xl font-bold mb-2">Positions</h2>
       <p class="text-base-content/70 mb-6">
-        The <code>position</code> prop controls where the label appears: <code>start</code>,
+        The <code>position</code> input controls where the label appears: <code>start</code>,
         <code>center</code> (default), or <code>end</code>.
       </p>
       <div>
@@ -105,37 +139,40 @@ import UiDivider from '@/shared/ui/ui-divider/UiDivider.vue'
 
     <hr class="border-base-300" />
 
-    <!-- Vertical -->
+    <!-- Responsive -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Vertical Divider</h2>
+      <h2 class="text-2xl font-bold mb-2">Responsive</h2>
       <p class="text-base-content/70 mb-6">
-        Vertical divider with or without text.
+        The <code>responsive</code> input sets a breakpoint in pixels where a vertical divider
+        switches to horizontal. Resize the viewport to see the effect — the divider below is vertical
+        on narrow screens and horizontal on wide screens (<code>responsive="768"</code>).
       </p>
-      <div class="flex h-32 gap-4 items-center">
-        <span>Left</span>
-        <UiDivider orientation="vertical" />
-        <span>Right</span>
-      </div>
-      <div class="flex h-32 gap-4 items-center mt-4">
-        <span>Left</span>
-        <UiDivider orientation="vertical" text="OR" />
-        <span>Right</span>
+      <div class="flex flex-row items-stretch">
+        <div class="bg-base-200 rounded-box p-4 flex-1">Left panel</div>
+        <UiDivider orientation="vertical" text="↔" :responsive="768" />
+        <div class="bg-base-200 rounded-box p-4 flex-1">Right panel</div>
       </div>
     </div>
 
     <hr class="border-base-300" />
 
-    <!-- Responsive -->
+    <!-- Combined -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Responsive</h2>
+      <h2 class="text-2xl font-bold mb-2">Combined Example</h2>
       <p class="text-base-content/70 mb-6">
-        Use the <code>responsive</code> prop to make the divider horizontal on small screens and
-        vertical on larger screens.
+        All features together: vertical orientation, primary color, text, start position, and
+        responsive breakpoint.
       </p>
-      <div class="flex flex-col lg:flex-row gap-4 items-center h-auto lg:h-32">
-        <span>Left</span>
-        <UiDivider orientation="vertical" :responsive="1024" />
-        <span>Right</span>
+      <div class="flex flex-row items-stretch">
+        <div class="bg-base-200 rounded-box p-4 flex-1 h-20">Column 1</div>
+        <UiDivider
+          orientation="vertical"
+          text="vs"
+          color="primary"
+          position="start"
+          :responsive="768"
+        />
+        <div class="bg-base-200 rounded-box p-4 flex-1 h-20">Column 2</div>
       </div>
     </div>
   </section>

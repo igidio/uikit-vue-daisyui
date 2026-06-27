@@ -50,7 +50,7 @@ onUnmounted(() => {
 const divider_classes: string = (() => {
   const c: string[] = ['divider']
   if (props.orientation === 'vertical' && !is_wide_enough.value) {
-    c.push('divider-horizontal', 'h-full')
+    c.push('divider-horizontal', 'min-h-full')
   }
   if (props.color) {
     c.push(divider_colors[props.color as UiDividerColors])

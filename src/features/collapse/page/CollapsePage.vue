@@ -4,53 +4,89 @@ import UiCollapse from '@/shared/ui/ui-collapse/UiCollapse.vue'
 
 <template>
   <section class="space-y-12">
+    <!-- Collapse with checkbox (click again) -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Default Collapse</h2>
-      <p class="text-base-content/70 mb-6">A simple collapsible section with arrow icon.</p>
-      <UiCollapse title="Click to open this collapse">
-        <p>This content is hidden by default and shown when the collapse is opened.</p>
-        <p class="mt-2">You can put any content here.</p>
+      <h2 class="text-2xl font-bold mb-2">Collapse with Checkbox (Click Again)</h2>
+      <p class="text-base-content/70 mb-6">Click to toggle content. Click again to close.</p>
+      <UiCollapse title="How do I create an account?" click-type="again" icons="arrow">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
       </UiCollapse>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Collapse with close on click outside -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Icons</h2>
+      <h2 class="text-2xl font-bold mb-2">Collapse with Close on Click Outside</h2>
+      <p class="text-base-content/70 mb-6">Click to toggle content. Click outside to close.</p>
+      <UiCollapse title="How do I create an account?" click-type="outside" icons="arrow">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
+      </UiCollapse>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Without border and background color -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Without Border and Background</h2>
       <p class="text-base-content/70 mb-6">
-        Arrow and math signs (<code>+/-</code>) icons.
+        Collapse with no border or background color using the <code>unwrap</code> option.
       </p>
-      <div class="space-y-4">
-        <UiCollapse title="Arrow icon" icons="arrow">
-          <p>Content with arrow icon.</p>
-        </UiCollapse>
-        <UiCollapse title="Plus icon" icons="mathsigns">
-          <p>Content with plus/minus icon.</p>
+      <UiCollapse title="How do I create an account?" :unwrap="true" icons="arrow">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
+      </UiCollapse>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- With arrow icon -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">With Arrow Icon</h2>
+      <p class="text-base-content/70 mb-6">Default icon style showing an arrow indicator.</p>
+      <UiCollapse title="How do I create an account?" icons="arrow">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
+      </UiCollapse>
+      <div class="mt-4">
+        <UiCollapse title="I forgot my password. What should I do?" icons="arrow">
+          Click on "Forgot Password" on the login page and follow the instructions sent to your email.
         </UiCollapse>
       </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- With plus/minus icon -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">No border (Unwrap)</h2>
-      <p class="text-base-content/70 mb-6">Collapse without background and border.</p>
-      <UiCollapse title="Unwrapped collapse" :unwrap="true">
-        <p>This collapse has no background or border.</p>
+      <h2 class="text-2xl font-bold mb-2">With Plus/Minus Icon</h2>
+      <p class="text-base-content/70 mb-6">Alternative icon style showing a plus/minus indicator.</p>
+      <UiCollapse title="How do I create an account?" icons="mathsigns">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
       </UiCollapse>
+      <div class="mt-4">
+        <UiCollapse title="I forgot my password. What should I do?" icons="mathsigns">
+          Click on "Forgot Password" on the login page and follow the instructions sent to your email.
+        </UiCollapse>
+      </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Icon at start position -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Icon Position</h2>
-      <p class="text-base-content/70 mb-6">Icon at start or end.</p>
-      <div class="space-y-4">
-        <UiCollapse title="Icon at end (default)" icons="arrow" icon_position="end">
-          <p>Arrow icon at the end.</p>
-        </UiCollapse>
-        <UiCollapse title="Icon at start" icons="arrow" icon_position="start">
-          <p>Arrow icon at the start.</p>
+      <h2 class="text-2xl font-bold mb-2">Icon at Start Position</h2>
+      <p class="text-base-content/70 mb-6">
+        Icon positioned at the start of the title instead of the end.
+      </p>
+      <UiCollapse title="How do I create an account?" icons="arrow" icon-position="start">
+        Click the "Sign Up" button in the top right corner and follow the registration process.
+      </UiCollapse>
+      <div class="mt-4">
+        <UiCollapse
+          title="I forgot my password. What should I do?"
+          icons="mathsigns"
+          icon-position="start"
+        >
+          Click on "Forgot Password" on the login page and follow the instructions sent to your email.
         </UiCollapse>
       </div>
     </div>
