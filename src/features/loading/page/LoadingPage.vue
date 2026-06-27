@@ -38,7 +38,23 @@ import UiLoading from '@/shared/ui/ui-loading/UiLoading.vue'
       <h2 class="text-2xl font-bold mb-2">Colors</h2>
       <p class="text-base-content/70 mb-6">Loading with colors.</p>
       <div class="flex flex-wrap items-center gap-6">
-        <UiLoading v-for="color in ['primary','secondary','accent','info','success','warning','error']" :key="color" :color="color" type="spinner" />
+        <UiLoading v-for="color in ['primary','secondary','accent','neutral','info','success','warning','error','ghost']" :key="color" :color="color" type="spinner" />
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Combined -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Combined</h2>
+      <p class="text-base-content/70 mb-6">Mix type, size, and color together.</p>
+      <div class="flex flex-wrap items-center gap-6">
+        <UiLoading type="spinner" size="xs" color="primary" />
+        <UiLoading type="dots" size="sm" color="secondary" />
+        <UiLoading type="ring" size="md" color="accent" />
+        <UiLoading type="ball" size="lg" color="info" />
+        <UiLoading type="bars" size="xl" color="success" />
+        <UiLoading type="infinity" size="lg" color="warning" />
       </div>
     </div>
   </section>

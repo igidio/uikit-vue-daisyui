@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import UiAlert from '@/shared/ui/ui-alert/UiAlert.vue'
 import UiAura from '@/shared/ui/ui-aura/UiAura.vue'
+import UiBadge from '@/shared/ui/ui-badge/UiBadge.vue'
+import UiButton from '@/shared/ui/ui-button/UiButton.vue'
 </script>
 
 <template>
@@ -7,31 +10,41 @@ import UiAura from '@/shared/ui/ui-aura/UiAura.vue'
     <!-- Basic Aura -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Basic Aura</h2>
-      <p class="text-base-content/70 mb-6">A basic aura container with default settings.</p>
+      <p class="text-base-content/70 mb-6">Default aura effect wrapping a button.</p>
       <div class="flex flex-wrap items-center gap-8">
         <UiAura>
-          <div class="p-8 rounded-box bg-base-100">
-            <h3 class="text-xl font-bold">Content Inside Aura</h3>
-            <p class="text-sm mt-2">This content is wrapped in an aura effect.</p>
-          </div>
+          <UiButton label="Button with aura" />
         </UiAura>
       </div>
     </div>
 
     <hr class="border-base-300" />
 
-    <!-- Types -->
+    <!-- Aura Types -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Types</h2>
-      <p class="text-base-content/70 mb-6">Different aura types: dual, rainbow, holo, glow, gold, and silver.</p>
+      <p class="text-base-content/70 mb-6">
+        Different aura light effects: dual, rainbow, holo, glow, gold, and silver.
+      </p>
       <div class="flex flex-wrap items-center gap-8">
-        <div v-for="t in (['dual', 'rainbow', 'holo', 'glow', 'gold', 'silver'] as const)" :key="t" class="flex flex-col items-center gap-2">
-          <UiAura :type="t">
-            <div class="p-4 rounded-box bg-base-100 w-24 h-24 flex items-center justify-center">
-              <span class="font-semibold capitalize">{{ t }}</span>
-            </div>
-          </UiAura>
-        </div>
+        <UiAura type="dual">
+          <UiButton variant="neutral" label="Dual" />
+        </UiAura>
+        <UiAura type="rainbow">
+          <UiButton variant="neutral" label="Rainbow" />
+        </UiAura>
+        <UiAura type="holo">
+          <UiButton variant="neutral" label="Holo" />
+        </UiAura>
+        <UiAura type="glow">
+          <UiButton variant="neutral" label="Glow" />
+        </UiAura>
+        <UiAura type="gold">
+          <UiButton variant="neutral" label="Gold" />
+        </UiAura>
+        <UiAura type="silver">
+          <UiButton variant="neutral" label="Silver" />
+        </UiAura>
       </div>
     </div>
 
@@ -40,15 +53,76 @@ import UiAura from '@/shared/ui/ui-aura/UiAura.vue'
     <!-- Sizes -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Different aura sizes from xs to xl.</p>
-      <div class="flex flex-wrap items-end gap-8">
-        <div v-for="s in (['xs', 'sm', 'md', 'lg', 'xl'] as const)" :key="s" class="flex flex-col items-center gap-2">
-          <UiAura :size="s" type="dual">
-            <div class="rounded-box bg-base-100 flex items-center justify-center" :class="s === 'xs' ? 'p-2 w-12 h-12' : s === 'sm' ? 'p-3 w-16 h-16' : s === 'lg' ? 'p-6 w-32 h-32' : s === 'xl' ? 'p-8 w-40 h-40' : 'p-4 w-24 h-24'">
-              <span class="font-semibold text-sm">{{ s }}</span>
-            </div>
-          </UiAura>
-        </div>
+      <p class="text-base-content/70 mb-6">Aura available in xs, sm, md, lg, and xl sizes.</p>
+      <div class="flex flex-wrap items-center gap-8">
+        <UiAura size="xs">
+          <UiButton size="xs" label="XSmall" />
+        </UiAura>
+        <UiAura size="sm">
+          <UiButton size="sm" label="Small" />
+        </UiAura>
+        <UiAura size="md">
+          <UiButton size="md" label="Medium" />
+        </UiAura>
+        <UiAura size="lg">
+          <UiButton size="lg" label="Large" />
+        </UiAura>
+        <UiAura size="xl">
+          <UiButton size="xl" label="XLarge" />
+        </UiAura>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Aura with Badge -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Aura with Badge</h2>
+      <p class="text-base-content/70 mb-6">Aura wrapping a badge component.</p>
+      <div class="flex flex-wrap items-center gap-8">
+        <UiAura type="rainbow">
+          <UiBadge variant="neutral" label="New" size="lg" />
+        </UiAura>
+        <UiAura type="gold">
+          <UiBadge variant="neutral" label="Premium" size="lg" />
+        </UiAura>
+        <UiAura type="silver">
+          <UiBadge variant="neutral" label="Featured" size="lg" />
+        </UiAura>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Aura with Alert -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Aura with Alert</h2>
+      <p class="text-base-content/70 mb-6">Aura wrapping alert components for extra emphasis.</p>
+      <div class="space-y-4">
+        <UiAura type="glow">
+          <UiAlert icon="info" label="This is an informational message with an aura effect." />
+        </UiAura>
+        <UiAura type="dual">
+          <UiAlert icon="success" label="Success! Your action was completed with an aura." />
+        </UiAura>
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Custom Class -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Custom Class</h2>
+      <p class="text-base-content/70 mb-6">
+        Use <code>_class</code> to add custom Tailwind utilities or custom animation duration.
+      </p>
+      <div class="flex flex-wrap items-center gap-8">
+        <UiAura type="rainbow" _class="[--aura-duration:2000ms]">
+          <UiButton variant="neutral" label="Slow aura (2s)" />
+        </UiAura>
+        <UiAura type="rainbow" _class="[--aura-duration:500ms]">
+          <UiButton variant="neutral" label="Fast aura (0.5s)" />
+        </UiAura>
       </div>
     </div>
   </section>

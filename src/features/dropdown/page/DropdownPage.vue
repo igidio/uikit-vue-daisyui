@@ -66,5 +66,64 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
         </UiDropdown>
       </div>
     </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">With Icons</h2>
+      <p class="text-base-content/70 mb-6">Dropdown with icons inside items.</p>
+      <UiDropdown id="icon-dropdown">
+        <template #trigger>
+          <UiButton label="Click" />
+        </template>
+        <UiDropdownItem>
+          <span class="flex items-center gap-2">✏️ Edit</span>
+        </UiDropdownItem>
+        <UiDropdownItem>
+          <span class="flex items-center gap-2">📋 Copy</span>
+        </UiDropdownItem>
+        <UiDropdownItem>
+          <span class="flex items-center gap-2">🗑️ Delete</span>
+        </UiDropdownItem>
+      </UiDropdown>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Combined: Top + End</h2>
+      <p class="text-base-content/70 mb-6">Dropdown opens top and aligns to the end.</p>
+      <UiDropdown id="combined-dropdown" position="top" align="end">
+        <template #trigger>
+          <UiButton label="Click" />
+        </template>
+        <UiDropdownItem>Item 1</UiDropdownItem>
+        <UiDropdownItem>Item 2</UiDropdownItem>
+        <UiDropdownItem>Item 3</UiDropdownItem>
+      </UiDropdown>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Complex Content</h2>
+      <p class="text-base-content/70 mb-6">
+        Dropdown items can contain any HTML content via the default slot.
+      </p>
+      <UiDropdown id="complex-dropdown">
+        <template #trigger>
+          <UiButton variant="primary" label="Actions" />
+        </template>
+        <UiDropdownItem>
+          <a href="#">✏️ Edit</a>
+        </UiDropdownItem>
+        <UiDropdownItem>
+          <a href="#">📋 Duplicate</a>
+        </UiDropdownItem>
+        <UiDropdownItem>
+          <a href="#" class="text-error">🗑️ Delete</a>
+        </UiDropdownItem>
+      </UiDropdown>
+    </div>
   </section>
 </template>
