@@ -7,6 +7,7 @@ export interface NavigationOption {
 export const navigationOptions: NavigationOption[] = [
   { label: 'Inicio', path: '' },
   { label: 'Accordion', path: 'accordion', documentation: 'https://daisyui.com/components/accordion/' },
+  { label: 'Icon', path: 'icon', documentation: 'https://daisyui.com/components/icon/' },
   { label: 'Alert', path: 'alert', documentation: 'https://daisyui.com/components/alert/' },
   { label: 'Aura', path: 'aura', documentation: 'https://daisyui.com/components/aura/' },
   { label: 'Avatar', path: 'avatar', documentation: 'https://daisyui.com/components/avatar/' },

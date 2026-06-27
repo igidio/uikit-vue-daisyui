@@ -18,6 +18,11 @@ const router = createRouter({
           name: 'accordion',
           component: () => import('@/features/accordion/page/AccordionPage.vue'),
         },
+        {
+          path: 'icon',
+          name: 'icon',
+          component: () => import('@/features/icon/page/IconPage.vue'),
+        },
       ],
     },
   ],
