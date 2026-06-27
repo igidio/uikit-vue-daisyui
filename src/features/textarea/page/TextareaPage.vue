@@ -1,36 +1,105 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import UiTextarea from '@/shared/ui/ui-textarea/UiTextarea.vue'
+import type { UiColors } from '@/shared/ui/ui-types'
 
-const textarea_value = ref('')
+interface TextareaDemo {
+  label: string
+  color?: UiColors
+  placeholder: string
+  disabled?: boolean
+  readonly?: boolean
+  resizable?: boolean
+  rows?: number
+  value?: string
+}
+
+const colors: UiColors[] = [
+  'neutral', 'primary', 'secondary', 'accent',
+  'info', 'success', 'warning', 'error', 'ghost',
+]
+
+const demos: TextareaDemo[] = [
+  { label: 'Default Textarea', placeholder: 'Write something...' },
+  { label: 'With Value', placeholder: 'Type here...', value: 'Hello\nWorld!' },
+  { label: 'Disabled', color: 'primary', placeholder: 'Disabled textarea', disabled: true },
+  { label: 'Read Only', color: 'info', placeholder: 'Read only', readonly: true, value: 'Cannot edit this' },
+  { label: 'Not Resizable', placeholder: 'Cannot be resized', resizable: false },
+  { label: 'Custom Rows (8)', placeholder: 'Tall textarea...', rows: 8 },
+]
+
+const colorDemos: TextareaDemo[] = colors.map((c) => ({
+  label: `Color: ${c}`,
+  color: c,
+  placeholder: `textarea-${c}`,
+}))
 </script>
 
 <template>
-  <section class="space-y-12">
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Default Textarea</h2>
-      <p class="text-base-content/70 mb-6">A simple textarea.</p>
-      <UiTextarea v-model="textarea_value" placeholder="Type here..." />
-    </div>
+  <div class="p-8 max-w-2xl mx-auto space-y-10">
+    <h1 class="text-2xl font-bold">Textarea Component</h1>
+
+    <!-- Basic demos -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Variants</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div v-for="(demo, index) in demos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiTextarea
+            :placeholder="demo.placeholder"
+            :color="demo.color"
+            :disabled="demo.disabled ?? false"
+            :readonly="demo.readonly ?? false"
+            :resizable="demo.resizable ?? true"
+            :rows="demo.rows ?? 4"
+            :model-value="demo.value ?? ''"
+          />
+        </div>
+      </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Sizes</h2>
-      <p class="text-base-content/70 mb-6">Available sizes.</p>
-      <div class="flex flex-col gap-4">
-        <UiTextarea v-for="size in ['xs','sm','md','lg','xl']" :key="size" :size="size" :placeholder="`Size: ${size}`" />
+    <!-- Colors showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Colors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div v-for="(demo, index) in colorDemos" :key="index">
+          <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
+          <UiTextarea
+            :color="demo.color"
+            :placeholder="demo.placeholder"
+          />
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr class="border-base-300" />
 
-    <div>
-      <h2 class="text-2xl font-bold mb-2">Colors</h2>
-      <p class="text-base-content/70 mb-6">Textarea with different colors.</p>
+    <!-- Sizes showcase -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Sizes</h2>
       <div class="flex flex-col gap-4">
-        <UiTextarea v-for="color in ['primary','secondary','accent','info','success','warning','error']" :key="color" :color="color" :placeholder="`Color: ${color}`" />
+        <div>
+          <p class="text-sm font-medium mb-2">Extra Small</p>
+          <UiTextarea placeholder="textarea-xs" size="xs" />
+        </div>
+        <div>
+          <p class="text-sm font-medium mb-2">Small</p>
+          <UiTextarea placeholder="textarea-sm" size="sm" />
+        </div>
+        <div>
+          <p class="text-sm font-medium mb-2">Medium (default)</p>
+          <UiTextarea placeholder="textarea-md" size="md" />
+        </div>
+        <div>
+          <p class="text-sm font-medium mb-2">Large</p>
+          <UiTextarea placeholder="textarea-lg" size="lg" />
+        </div>
+        <div>
+          <p class="text-sm font-medium mb-2">Extra Large</p>
+          <UiTextarea placeholder="textarea-xl" size="xl" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>

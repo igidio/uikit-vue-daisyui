@@ -9,6 +9,13 @@ const basic_data: UiStepsItem[] = [
   { label: 'Receive Product' },
 ]
 
+const horizontal_data: UiStepsItem[] = [
+  { label: 'Start', color: 'primary' },
+  { label: 'In Progress', color: 'primary' },
+  { label: 'Review' },
+  { label: 'Done' },
+]
+
 const colorful_data: UiStepsItem[] = [
   { label: 'Fly to moon', color: 'info' },
   { label: 'Shrink the moon', color: 'info' },
@@ -17,43 +24,81 @@ const colorful_data: UiStepsItem[] = [
 ]
 
 const icon_data: UiStepsItem[] = [
-  { label: 'Login', icon: 'login', color: 'primary' },
-  { label: 'Verification', icon: 'success', color: 'success' },
-  { label: 'Pay', icon: 'stock', color: 'info' },
-  { label: 'Done', icon: 'home', color: 'accent' },
+  { label: 'User info', icon: 'home' },
+  { label: 'Payment', icon: 'plus' },
+  { label: 'Confirmation', icon: 'success' },
+  { label: 'Done', icon: 'info' },
+]
+
+const mixed_data: UiStepsItem[] = [
+  { label: 'Step 1', color: 'primary', icon: 'home' },
+  { label: 'Step 2', color: 'primary', icon: 'search' },
+  { label: 'Step 3', color: 'accent', icon: 'success' },
+  { label: 'Step 4', color: 'accent', icon: 'close' },
 ]
 </script>
 
 <template>
   <section class="space-y-12">
+    <!-- Basic Steps (vertical by default) -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Default Steps</h2>
-      <p class="text-base-content/70 mb-6">A horizontal steps indicator.</p>
-      <UiSteps :data="basic_data" />
+      <h2 class="text-2xl font-bold mb-2">Steps</h2>
+      <p class="text-base-content/70 mb-6">Default vertical steps with sequential numbering.</p>
+      <div class="flex justify-center py-4">
+        <UiSteps :data="basic_data" direction="vertical" />
+      </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Horizontal Steps -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Vertical</h2>
-      <p class="text-base-content/70 mb-6">Vertical steps layout.</p>
-      <UiSteps :data="basic_data" direction="vertical" />
+      <h2 class="text-2xl font-bold mb-2">Horizontal Steps</h2>
+      <p class="text-base-content/70 mb-6">
+        Set <code>direction="horizontal"</code> for a horizontal layout.
+      </p>
+      <div class="overflow-x-auto py-4">
+        <UiSteps :data="horizontal_data" direction="horizontal" />
+      </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Steps with Custom Colors -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Colorful</h2>
-      <p class="text-base-content/70 mb-6">Steps with colors.</p>
-      <UiSteps :data="colorful_data" />
+      <h2 class="text-2xl font-bold mb-2">Custom Colors</h2>
+      <p class="text-base-content/70 mb-6">
+        Use the <code>color</code> prop to apply a step color modifier.
+      </p>
+      <div class="flex justify-center py-4">
+        <UiSteps :data="colorful_data" direction="vertical" />
+      </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Steps with Icons -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">With Icons</h2>
-      <p class="text-base-content/70 mb-6">Steps with icons.</p>
-      <UiSteps :data="icon_data" />
+      <h2 class="text-2xl font-bold mb-2">Steps with Icons</h2>
+      <p class="text-base-content/70 mb-6">
+        Provide an <code>icon</code> to replace the sequential number inside the step circle.
+      </p>
+      <div class="flex justify-center py-4">
+        <UiSteps :data="icon_data" direction="vertical" />
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Mixed: Colors + Icons -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Colorful Steps with Icons</h2>
+      <p class="text-base-content/70 mb-6">
+        Combine <code>color</code> and <code>icon</code> for a richer visual.
+      </p>
+      <div class="overflow-x-auto py-4">
+        <UiSteps :data="mixed_data" direction="horizontal" />
+      </div>
     </div>
   </section>
 </template>

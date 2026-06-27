@@ -5,34 +5,61 @@ import UiTextrotateItem from '@/shared/ui/ui-textrotate/UiTextrotateItem.vue'
 
 <template>
   <section class="space-y-12">
+    <!-- Basic Text Rotate -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Text Rotate</h2>
-      <p class="text-base-content/70 mb-6">Text that rotates between different values.</p>
-      <p class="text-2xl">
-        I love
+      <p class="text-base-content/70 mb-6">Rotates through 3 words by default in 10 seconds.</p>
+      <div class="flex justify-center">
         <UiTextrotate>
-          <UiTextrotateItem>coding</UiTextrotateItem>
-          <UiTextrotateItem>design</UiTextrotateItem>
-          <UiTextrotateItem>music</UiTextrotateItem>
-          <UiTextrotateItem>coffee</UiTextrotateItem>
+          <UiTextrotateItem>ONE</UiTextrotateItem>
+          <UiTextrotateItem>TWO</UiTextrotateItem>
+          <UiTextrotateItem>THREE</UiTextrotateItem>
         </UiTextrotate>
-      </p>
+      </div>
     </div>
 
     <hr class="border-base-300" />
 
+    <!-- Rotating 6 words -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">With Colors</h2>
-      <p class="text-base-content/70 mb-6">Rotating text with different styles.</p>
-      <p class="text-2xl">
+      <h2 class="text-2xl font-bold mb-2">Rotating 6 Words</h2>
+      <p class="text-base-content/70 mb-6">Big font size, horizontally centered.</p>
+      <div class="flex justify-center">
         <UiTextrotate>
-          <UiTextrotateItem><span class="text-primary">TypeScript</span></UiTextrotateItem>
-          <UiTextrotateItem><span class="text-secondary">Vue</span></UiTextrotateItem>
-          <UiTextrotateItem><span class="text-accent">React</span></UiTextrotateItem>
-          <UiTextrotateItem><span class="text-info">Angular</span></UiTextrotateItem>
+          <UiTextrotateItem>DESIGN</UiTextrotateItem>
+          <UiTextrotateItem>DEVELOP</UiTextrotateItem>
+          <UiTextrotateItem>DEPLOY</UiTextrotateItem>
+          <UiTextrotateItem>SCALE</UiTextrotateItem>
+          <UiTextrotateItem>MAINTAIN</UiTextrotateItem>
+          <UiTextrotateItem>REPEAT</UiTextrotateItem>
         </UiTextrotate>
-        developer
+      </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <!-- Rotating words in a sentence -->
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Rotating Words in a Sentence</h2>
+      <p class="text-base-content/70 mb-6">
+        Different colors for each word using custom <code>class</code> attributes on items.
       </p>
+      <div class="flex justify-center">
+        <span>
+          Providing AI Agents for
+          <UiTextrotate>
+            <UiTextrotateItem>
+              <span class="bg-teal-400 text-teal-800 px-2">Designers</span>
+            </UiTextrotateItem>
+            <UiTextrotateItem>
+              <span class="bg-red-400 text-red-800 px-2">Developers</span>
+            </UiTextrotateItem>
+            <UiTextrotateItem>
+              <span class="bg-blue-400 text-blue-800 px-2">Managers</span>
+            </UiTextrotateItem>
+          </UiTextrotate>
+        </span>
+      </div>
     </div>
   </section>
 </template>
