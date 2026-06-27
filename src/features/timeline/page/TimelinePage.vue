@@ -30,8 +30,8 @@ const vertical_data: UiTimelineItem[] = [
   { subtitle: '1984', text: 'First Macintosh computer', icon: 'home' },
   { subtitle: '1998', text: 'iMac', icon: 'home' },
   { subtitle: '2001', text: 'iPod', icon: 'menu' },
-  { subtitle: '2007', text: 'iPhone', icon: 'table' },
-  { subtitle: '2015', text: 'Apple Watch', icon: 'table' },
+  { subtitle: '2007', text: 'iPhone', icon: 'appointment' },
+  { subtitle: '2015', text: 'Apple Watch', icon: 'appointment' },
 ]
 
 const described_data: UiTimelineItem[] = [
@@ -44,13 +44,13 @@ const described_data: UiTimelineItem[] = [
   {
     subtitle: '2007',
     text: 'iPhone',
-    icon: 'table',
+    icon: 'appointment',
     description: "Apple's first-generation smartphone.",
   },
   {
     subtitle: '2015',
     text: 'Apple Watch',
-    icon: 'table',
+    icon: 'appointment',
     description: 'Smartwatch with fitness tracking and health capabilities.',
   },
 ]

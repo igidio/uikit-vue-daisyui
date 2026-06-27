@@ -36,13 +36,14 @@ function is_not_last(index: number): boolean {
   <ul :class="timeline_classes">
     <li v-for="(item, i) in data" :key="i">
       <hr v-if="i > 0" :class="hr_color_class(item.color)" />
-      <div v-if="item.subtitle" class="timeline-start">{{ item.subtitle }}</div>
+      <div v-if="item.subtitle" class="timeline-start timeline-box">{{ item.subtitle }}</div>
       <div class="timeline-middle">
         <UiIcon v-if="item.icon" :icon="item.icon" :class="icon_color_class(item.color)" />
+        <UiIcon v-else icon="success" :class="icon_color_class(item.color)" />
       </div>
-      <div class="timeline-end">
-        <span v-if="item.text" :class="icon_color_class(item.color)">{{ item.text }}</span>
-        <p v-if="item.description" class="text-sm text-base-content/60">{{ item.description }}</p>
+      <div v-if="item.text" class="timeline-end timeline-box">
+        {{ item.text }}
+        <div v-if="item.description" class="text-sm opacity-70 mt-1">{{ item.description }}</div>
       </div>
       <hr v-if="is_not_last(i)" :class="hr_color_class(item.color)" />
     </li>
