@@ -8,7 +8,7 @@ const modal_service = useModal()
 const modal_el = ref<HTMLDialogElement | null>(null)
 
 const show_backdrop = () => {
-  return modal_service.backdrop.value === 'dynamic' && modal_service.closable.value
+  return modal_service.backdrop.value === 'dynamic'
 }
 
 import { onMounted } from 'vue'

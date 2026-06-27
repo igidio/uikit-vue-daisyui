@@ -21,7 +21,7 @@ interface ModalOptionsExtended {
 
 const options = ref<ModalOptionsExtended>({})
 const backdrop = ref<UiModalBackdrop>('dynamic')
-const closable = ref(true)
+const closable = ref(false)
 const size = ref<UiModalSize>('sm')
 const is_open = ref(false)
 const show_content = ref(false)
