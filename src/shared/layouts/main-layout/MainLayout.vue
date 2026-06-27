@@ -29,25 +29,6 @@ const currentOption = computed<NavigationOption | undefined>(() =>
 			<main
 				class="p-6 max-w-325 mx-auto h-full w-full gap-4 flex flex-col overflow-x-hidden"
 			>
-				<div v-if="currentOption" class="flex flex-col gap-4">
-					<div
-						class="flex flex-col md:flex-row items-center justify-between gap-2"
-					>
-						<h1 class="text-heading font-bold text-3xl">
-							{{ currentOption.label }}
-						</h1>
-						<a
-							v-if="currentOption.documentation"
-							:href="currentOption.documentation"
-							class="text-primary hover:text-brand"
-							target="_blank"
-							rel="noopener"
-							>Full Documentation</a
-						>
-						<div v-else></div>
-					</div>
-					<hr class="border-default" />
-				</div>
 				<RouterView />
 			</main>
 		</div>

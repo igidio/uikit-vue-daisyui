@@ -3,7 +3,7 @@ import UiTooltip from '@/shared/ui/ui-tooltip/UiTooltip.vue'
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 overflow-y-hidden">
+  <div class="flex flex-col gap-4 overflow-hidden">
     <!-- Basic Tooltip -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Basic Tooltip</h2>

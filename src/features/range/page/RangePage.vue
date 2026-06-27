@@ -39,7 +39,7 @@ const interactive_value = ref(50)
 </script>
 
 <template>
-  <div class="p-8 max-w-2xl mx-auto space-y-10">
+  <div class="space-y-10">
     <h1 class="text-2xl font-bold">Range Component</h1>
 
     <!-- Basic demos -->

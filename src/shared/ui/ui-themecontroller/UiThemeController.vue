@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+
 import { useThemeStore } from '@/shared/stores/theme.store'
 import type { UiThemeControllerType } from './ui-themecontroller.properties'
 import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
   type: 'toggle',
 })
 
-const model = computed({
+const model = defineModel<boolean>({
   get: () => theme_store.mode === 'dark',
   set: () => theme_store.toggle(),
 })

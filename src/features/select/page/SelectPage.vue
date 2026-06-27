@@ -46,7 +46,7 @@ const sizes: { label: string; size: SelectSize }[] = [
 </script>
 
 <template>
-  <div class="p-8 w-full mx-auto space-y-10">
+  <div class="w-full space-y-10">
     <h1 class="text-2xl font-bold">Select Component</h1>
 
     <!-- Basic demos -->

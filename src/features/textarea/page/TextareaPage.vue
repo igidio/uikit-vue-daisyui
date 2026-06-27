@@ -35,7 +35,7 @@ const colorDemos: TextareaDemo[] = colors.map((c) => ({
 </script>
 
 <template>
-  <div class="p-8 max-w-2xl mx-auto space-y-10">
+  <div class="w-full space-y-10">
     <h1 class="text-2xl font-bold">Textarea Component</h1>
 
     <!-- Basic demos -->

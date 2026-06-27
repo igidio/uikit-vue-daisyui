@@ -42,7 +42,7 @@ const sizes: { label: string; size: string }[] = [
 </script>
 
 <template>
-  <div class="p-8 max-w-2xl mx-auto space-y-10">
+  <div class="space-y-10">
     <h1 class="text-2xl font-bold">Input Component</h1>
 
     <!-- Basic demos -->
@@ -56,7 +56,7 @@ const sizes: { label: string; size: string }[] = [
             :placeholder="demo.placeholder"
             :disabled="demo.disabled ?? false"
             :readonly="demo.readonly ?? false"
-            :model-value="demo.value ?? null"
+            :model-value="demo.value ?? undefined"
           />
         </div>
       </div>
