@@ -40,6 +40,7 @@ const range_classes: string = (() => {
     :step="step"
     :disabled="disabled"
     :class="range_classes"
+    class="w-full"
     v-model.number="model_value"
   />
 </template>

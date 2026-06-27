@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import UiRange from '@/shared/ui/ui-range/UiRange.vue'
 import type { UiColors } from '@/shared/ui/ui-types'
-import type { SelectSize } from '@/shared/ui/ui-select/UiSelect.vue'
+import type { SelectSize } from '@/shared/ui/ui-select/ui-select-properties'
 
 interface RangeDemo {
   label: string
@@ -36,6 +36,8 @@ const sizes: { label: string; size: SelectSize }[] = [
 ]
 
 const interactive_value = ref(50)
+const colors_section_value = ref(50)
+const sizes_section_value = ref(50)
 </script>
 
 <template>
@@ -49,7 +51,7 @@ const interactive_value = ref(50)
         <div v-for="(demo, index) in basic_demos" :key="index">
           <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
           <UiRange
-            :value="demo.value ?? 0"
+            v-model="demo.value"
             :color="demo.color"
             :disabled="demo.disabled ?? false"
           />
@@ -65,7 +67,7 @@ const interactive_value = ref(50)
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div v-for="(demo, index) in color_demos" :key="index">
           <p class="text-sm font-medium mb-2">{{ demo.label }}</p>
-          <UiRange :value="demo.value ?? 0" :color="demo.color" />
+          <UiRange v-model="demo.value" :color="demo.color" />
         </div>
       </div>
     </section>
@@ -78,7 +80,7 @@ const interactive_value = ref(50)
       <div class="flex flex-col gap-4">
         <div v-for="s in sizes" :key="s.size">
           <p class="text-sm font-medium mb-2">{{ s.label }}</p>
-          <UiRange value="25" :size="s.size" />
+          <UiRange v-model="colors_section_value" :size="s.size" />
         </div>
       </div>
     </section>
@@ -91,7 +93,7 @@ const interactive_value = ref(50)
       <div class="max-w-md">
         <div>
           <p class="text-sm font-medium mb-2">Steps of 25 (0-100)</p>
-          <UiRange :value="50" :min="0" :max="100" :step="25" color="primary" />
+          <UiRange v-model="sizes_section_value" :min="0" :max="100" :step="25" color="primary" />
         </div>
         <div class="flex justify-between text-xs px-1 mt-1">
           <span>0</span>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UiInput from '@/shared/ui/ui-input/UiInput.vue'
+import type { SelectSize } from '@/shared/ui/ui-select/ui-select-properties'
 import type { UiColors } from '@/shared/ui/ui-types'
 
 interface InputDemo {
@@ -32,7 +33,7 @@ const color_demos: InputDemo[] = colors.map((c) => ({
   placeholder: `input-${c}`,
 }))
 
-const sizes: { label: string; size: string }[] = [
+const sizes: { label: string; size: SelectSize }[] = [
   { label: 'Extra Small', size: 'xs' },
   { label: 'Small', size: 'sm' },
   { label: 'Medium (default)', size: 'md' },
