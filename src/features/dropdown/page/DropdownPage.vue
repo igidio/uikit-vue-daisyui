@@ -8,10 +8,12 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
   <section class="space-y-12">
     <div>
       <h2 class="text-2xl font-bold mb-2">Default Dropdown</h2>
-      <p class="text-base-content/70 mb-6">A simple dropdown menu.</p>
-      <UiDropdown id="demo-dropdown">
+      <p class="text-base-content/70 mb-6">
+        Dropdown with default position (bottom) and align (center).
+      </p>
+      <UiDropdown id="default-dropdown">
         <template #trigger>
-          <UiButton label="Dropdown" variant="primary" />
+          <UiButton label="Click" variant="primary" />
         </template>
         <UiDropdownItem>Item 1</UiDropdownItem>
         <UiDropdownItem>Item 2</UiDropdownItem>
@@ -22,17 +24,31 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
     <hr class="border-base-300" />
 
     <div>
-      <h2 class="text-2xl font-bold mb-2">Positions</h2>
-      <p class="text-base-content/70 mb-6">
-        Available positions: <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>.
-      </p>
-      <div class="flex flex-wrap gap-8 mt-8 mb-32">
-        <UiDropdown v-for="pos in ['top','bottom','left','right']" :key="pos" :id="`pos-${pos}`" :position="pos">
+      <h2 class="text-2xl font-bold mb-2">Position: Top</h2>
+      <p class="text-base-content/70 mb-6">Dropdown opens toward the top.</p>
+      <UiDropdown id="top-dropdown" position="top">
+        <template #trigger>
+          <UiButton label="Click" variant="primary" />
+        </template>
+        <UiDropdownItem>Item 1</UiDropdownItem>
+        <UiDropdownItem>Item 2</UiDropdownItem>
+        <UiDropdownItem>Item 3</UiDropdownItem>
+      </UiDropdown>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Position: Left</h2>
+      <p class="text-base-content/70 mb-6">Dropdown opens toward the left.</p>
+      <div class="flex justify-center">
+        <UiDropdown id="left-dropdown" position="left">
           <template #trigger>
-            <UiButton :label="pos" variant="secondary" />
+            <UiButton label="Click" variant="primary" />
           </template>
-          <UiDropdownItem>Item A</UiDropdownItem>
-          <UiDropdownItem>Item B</UiDropdownItem>
+          <UiDropdownItem>Item 1</UiDropdownItem>
+          <UiDropdownItem>Item 2</UiDropdownItem>
+          <UiDropdownItem>Item 3</UiDropdownItem>
         </UiDropdown>
       </div>
     </div>
@@ -40,31 +56,48 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
     <hr class="border-base-300" />
 
     <div>
-      <h2 class="text-2xl font-bold mb-2">Alignments</h2>
-      <p class="text-base-content/70 mb-6">Dropdown alignment.</p>
-      <div class="flex flex-wrap gap-8 mt-8 mb-32">
-        <UiDropdown id="align-start" align="start">
+      <h2 class="text-2xl font-bold mb-2">Position: Right</h2>
+      <p class="text-base-content/70 mb-6">Dropdown opens toward the right.</p>
+      <div class="flex justify-center">
+        <UiDropdown id="right-dropdown" position="right">
           <template #trigger>
-            <UiButton label="Start" variant="accent" />
+            <UiButton label="Click" variant="primary" />
           </template>
           <UiDropdownItem>Item 1</UiDropdownItem>
           <UiDropdownItem>Item 2</UiDropdownItem>
-        </UiDropdown>
-        <UiDropdown id="align-center" align="center">
-          <template #trigger>
-            <UiButton label="Center" variant="accent" />
-          </template>
-          <UiDropdownItem>Item 1</UiDropdownItem>
-          <UiDropdownItem>Item 2</UiDropdownItem>
-        </UiDropdown>
-        <UiDropdown id="align-end" align="end">
-          <template #trigger>
-            <UiButton label="End" variant="accent" />
-          </template>
-          <UiDropdownItem>Item 1</UiDropdownItem>
-          <UiDropdownItem>Item 2</UiDropdownItem>
+          <UiDropdownItem>Item 3</UiDropdownItem>
         </UiDropdown>
       </div>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Align: Start</h2>
+      <p class="text-base-content/70 mb-6">Dropdown aligns to the start of the trigger button.</p>
+      <UiDropdown id="start-dropdown" align="start">
+        <template #trigger>
+          <UiButton label="Click" variant="primary" />
+        </template>
+        <UiDropdownItem>Item 1</UiDropdownItem>
+        <UiDropdownItem>Item 2</UiDropdownItem>
+        <UiDropdownItem>Item 3</UiDropdownItem>
+      </UiDropdown>
+    </div>
+
+    <hr class="border-base-300" />
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Align: End</h2>
+      <p class="text-base-content/70 mb-6">Dropdown aligns to the end of the trigger button.</p>
+      <UiDropdown id="end-dropdown" align="end">
+        <template #trigger>
+          <UiButton label="Click" variant="primary" />
+        </template>
+        <UiDropdownItem>Item 1</UiDropdownItem>
+        <UiDropdownItem>Item 2</UiDropdownItem>
+        <UiDropdownItem>Item 3</UiDropdownItem>
+      </UiDropdown>
     </div>
 
     <hr class="border-base-300" />
@@ -74,7 +107,7 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
       <p class="text-base-content/70 mb-6">Dropdown with icons inside items.</p>
       <UiDropdown id="icon-dropdown">
         <template #trigger>
-          <UiButton label="Click" />
+          <UiButton label="Click" variant="primary" />
         </template>
         <UiDropdownItem>
           <span class="flex items-center gap-2">✏️ Edit</span>
@@ -95,7 +128,7 @@ import UiButton from '@/shared/ui/ui-button/UiButton.vue'
       <p class="text-base-content/70 mb-6">Dropdown opens top and aligns to the end.</p>
       <UiDropdown id="combined-dropdown" position="top" align="end">
         <template #trigger>
-          <UiButton label="Click" />
+          <UiButton label="Click" variant="primary" />
         </template>
         <UiDropdownItem>Item 1</UiDropdownItem>
         <UiDropdownItem>Item 2</UiDropdownItem>
