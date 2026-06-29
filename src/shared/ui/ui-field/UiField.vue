@@ -12,12 +12,13 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  id: 'field',
+  id: undefined,
   error: null,
   touched: false,
   required: false,
   isErrorFixed: false,
 })
+
 
 provide(FIELD_STATE_KEY, {
   id: toRef(props, 'id'),

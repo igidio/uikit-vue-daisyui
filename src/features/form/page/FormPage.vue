@@ -387,7 +387,6 @@ async function on_submit(event: Event) {
 
                 <UiField
                   label="Gender"
-                  id="gender"
                   :error="get_error('gender')"
                   :touched="touched.gender"
                   is-error-fixed
@@ -419,7 +418,6 @@ async function on_submit(event: Event) {
 
               <UiField
                 label="Rating"
-                id="rating"
                 :error="get_error('rating')"
                 :touched="touched.rating"
                 is-error-fixed

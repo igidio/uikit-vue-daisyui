@@ -67,13 +67,14 @@ function toggle_value(value: any, event: Event): void {
 </script>
 
 <template>
-  <div :id="id || field_state?.id.value" class="flex flex-wrap items-center gap-4">
+  <div class="flex flex-wrap items-center gap-4">
     <label
-      v-for="item in data"
+      v-for="(item, index) in data"
       :key="item.value"
       class="flex items-center gap-2 cursor-pointer"
     >
       <input
+        :id="field_state?.id.value ? index == 0 ? `${field_state.id.value}` :`${field_state.id.value}-${index}` : undefined"
         type="checkbox"
         :name="name"
         :class="checkbox_classes"
