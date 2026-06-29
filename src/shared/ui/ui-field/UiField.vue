@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { provide, toRef } from 'vue'
+import { FIELD_STATE_KEY } from './ui-field-injection'
+
 interface Props {
   label: string
   id?: string
@@ -8,12 +11,16 @@ interface Props {
   isErrorFixed?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   id: 'field',
   error: null,
   touched: false,
   required: false,
   isErrorFixed: false,
+})
+
+provide(FIELD_STATE_KEY, {
+  id: toRef(props, 'id'),
 })
 </script>
 
@@ -27,6 +34,8 @@ withDefaults(defineProps<Props>(), {
       <slot name="right" />
     </div>
     <slot />
+
+    {{  touched }}
 
     <div :class="isErrorFixed ? 'min-h-5' : ''">
       <p v-if="touched && error" class="text-error text-xs">

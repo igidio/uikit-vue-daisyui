@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inject } from "vue";
+import { FIELD_STATE_KEY } from "../ui-field/ui-field-injection";
 import type { UiColors } from "@/shared/ui/ui-types";
 import { calendar_sizes, type CalendarSize } from "./ui-calendar-properties";
 
@@ -9,6 +11,7 @@ interface Props {
 	min?: string;
 	max?: string;
 	disabled?: boolean;
+	id?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,7 +21,10 @@ const props = withDefaults(defineProps<Props>(), {
 	min: "",
 	max: "",
 	disabled: false,
+	id: undefined,
 });
+
+const field_state = inject(FIELD_STATE_KEY, null);
 
 const model_value = defineModel<string>({ default: "" });
 
@@ -57,6 +63,7 @@ const input_classes: string = `input w-full ${color_class} ${size_class}`
 
 <template>
 	<input
+		:id="id || field_state?.id.value"
 		type="date"
 		:placeholder="placeholder"
 		:min="min"

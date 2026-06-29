@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, useSlots, type VNode } from 'vue'
+import { computed, inject, useSlots, type VNode } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import { use_slot_children } from '@/shared/composables/useSlotChildren'
 import UiRadioItem from './UiRadioItem.vue'
 import type { RadioSize } from './ui-radio-properties'
@@ -10,6 +11,7 @@ interface Props {
   color?: keyof typeof radio_color_classes
   size?: RadioSize
   disabled?: boolean
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -17,7 +19,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: undefined,
   size: 'md',
   disabled: false,
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<string | number>({ default: '' })
 
@@ -50,7 +55,7 @@ const radio_classes: string = (() => {
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-4">
+  <div :id="id || field_state?.id.value" class="flex flex-wrap items-center gap-4">
     <label
       v-for="item in items"
       :key="item.value"

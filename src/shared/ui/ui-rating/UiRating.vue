@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import { rating_sizes, rating_color_classes, type UiRatingSizes, type UiRatingColors } from './ui-rating-properties'
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   half?: boolean
   quantity?: number
   icon?: string
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -22,7 +24,10 @@ const props = withDefaults(defineProps<Props>(), {
   half: false,
   quantity: 5,
   icon: 'mask-star',
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const value = defineModel<number>('value', { default: 3 })
 
@@ -61,7 +66,7 @@ function clear_rating(): void {
 </script>
 
 <template>
-  <div class="rating" :class="[size_class, { 'rating-half': half }]">
+  <div :id="id || field_state?.id.value" class="rating" :class="[size_class, { 'rating-half': half }]">
     <input
       v-if="half"
       type="radio"

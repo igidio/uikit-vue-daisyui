@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inject } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import type { TextareaSize } from './ui-textarea-properties'
 import { textarea_sizes, textarea_color_classes } from './ui-textarea-properties'
 
@@ -10,6 +12,7 @@ interface Props {
   resizable?: boolean
   readonly?: boolean
   disabled?: boolean
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,7 +23,10 @@ const props = withDefaults(defineProps<Props>(), {
   resizable: true,
   readonly: false,
   disabled: false,
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<string>({ default: '' })
 
@@ -39,6 +45,7 @@ const textarea_classes: string = (() => {
 
 <template>
   <textarea
+    :id="id || field_state?.id.value"
     :rows="rows"
     :placeholder="placeholder"
     :readonly="readonly"

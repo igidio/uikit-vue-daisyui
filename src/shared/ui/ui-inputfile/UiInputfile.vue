@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inject } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import { inputfile_sizes, inputfile_color_classes, type InputfileSize } from './ui-inputfile-properties'
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
   color?: keyof typeof inputfile_color_classes
   size?: InputfileSize
   disabled?: boolean
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,7 +18,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: undefined,
   size: 'md',
   disabled: false,
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<string | null>({ default: null })
 
@@ -41,6 +47,7 @@ function on_file_change(event: Event): void {
 
 <template>
   <input
+    :id="id || field_state?.id.value"
     type="file"
     :accept="accept"
     :multiple="multiple"

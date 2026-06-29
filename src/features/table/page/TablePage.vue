@@ -24,7 +24,6 @@ const mock_users: User[] = [
 ]
 
 const search_term = ref<string | null>(null)
-const search_value = ref('')
 const current_page = ref(1)
 const current_limit = ref(5)
 

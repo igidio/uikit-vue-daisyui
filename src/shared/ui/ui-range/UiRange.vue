@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inject } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import type { RangeSize } from './ui-range-properties'
 import { range_sizes, range_color_classes } from './ui-range-properties'
 
@@ -9,6 +11,7 @@ interface Props {
   color?: keyof typeof range_color_classes
   size?: RangeSize
   disabled?: boolean
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,7 +21,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: undefined,
   size: 'md',
   disabled: false,
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<number>({ default: 0 })
 
@@ -34,6 +40,7 @@ const range_classes: string = (() => {
 
 <template>
   <input
+    :id="id || field_state?.id.value"
     type="range"
     :min="min"
     :max="max"

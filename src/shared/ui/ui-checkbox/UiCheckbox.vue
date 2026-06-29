@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { inject } from 'vue'
+import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import type { UiColors } from '@/shared/ui/ui-types'
 import { checkbox_sizes, type CheckboxSize } from './ui-checkbox-properties'
 
@@ -13,6 +15,7 @@ interface Props {
   size?: CheckboxSize
   disabled?: boolean
   data: CheckboxOption[]
+  id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,7 +23,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: undefined,
   size: 'md',
   disabled: false,
+  id: undefined,
 })
+
+const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<any[]>({ default: () => [] })
 
@@ -61,7 +67,7 @@ function toggle_value(value: any, event: Event): void {
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-4">
+  <div :id="id || field_state?.id.value" class="flex flex-wrap items-center gap-4">
     <label
       v-for="item in data"
       :key="item.value"
