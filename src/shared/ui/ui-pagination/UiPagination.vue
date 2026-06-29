@@ -87,7 +87,7 @@ const is_disabled_nav = (type: 'prev' | 'next'): boolean => {
 </script>
 
 <template>
-  <div class="join flex flex-wrap">
+  <div class="join flex">
     <button
       v-if="nav_buttons"
       class="join-item btn"

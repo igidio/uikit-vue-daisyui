@@ -69,6 +69,8 @@ export const available_icons = {
   save: 'icon-[ri--save-2-fill]',
   copy: 'icon-[ri--clipboard-line]',
   key: 'icon-[ri--key-2-fill]',
+  table: 'icon-[ri--table-line]',
+  loading: 'icon-[ri--loader-5-fill]',
 } as const
 
 export type IconValue = keyof typeof available_icons
