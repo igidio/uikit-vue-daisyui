@@ -6,13 +6,13 @@ const modal_service = useModal()
 
 const buttons: ModalFormButton[] = [
   {
-    label: 'Cancelar',
+    label: 'Cancel',
     variant: 'secondary',
     size: 'sm',
     action: () => modal_service.close(),
   },
   {
-    label: 'Guardar',
+    label: 'Save',
     variant: 'success',
     size: 'sm',
     icon: 'success',
@@ -21,12 +21,12 @@ const buttons: ModalFormButton[] = [
 </script>
 
 <template>
-  <ModalForm title="Modal con botones de acción" :buttons="buttons">
+  <ModalForm title="Modal with action buttons" :buttons="buttons">
     <div class="space-y-3">
       <p class="text-sm text-base-content/70">
-        Los botones del footer se definen mediante el input <code>buttons</code>, que acepta un
-        arreglo con las mismas propiedades de <code>UiButton</code> más un callback
-        <code>action</code> opcional.
+        The footer buttons are defined using the <code>buttons</code> input, which accepts an
+        array with the same props as <code>UiButton</code> plus an optional
+        <code>action</code> callback.
       </p>
       <p class="text-sm text-base-content/70">
         TypeScript valida autocompletado gracias al helper

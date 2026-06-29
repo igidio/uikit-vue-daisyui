@@ -3,20 +3,21 @@ import DrawerForm from '@/shared/components/drawer-form/DrawerForm.vue'
 </script>
 
 <template>
-  <DrawerForm title="Drawer con título" :closable="true">
+  <DrawerForm title="Drawer with title" :closable="true">
     <div class="space-y-3 px-4 menu">
       <p class="text-sm text-base-content/70">
-        Este drawer usa
+        This drawer uses
         <code>drawer-form</code>
-        con los inputs
+        with the
         <code>title</code>
-        y
-        <code>closable</code>.
+        and
+        <code>closable</code>
+        inputs.
       </p>
       <p class="text-sm text-base-content/70">
-        El botón de cerrar (X) invoca a
+        The close button (X) calls
         <code>drawer_service.close()</code>
-        automáticamente.
+        automatically.
       </p>
     </div>
   </DrawerForm>

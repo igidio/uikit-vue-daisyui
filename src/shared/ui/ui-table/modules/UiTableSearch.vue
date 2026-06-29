@@ -9,7 +9,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  placeholder: 'Buscar',
+  placeholder: 'Search',
   use_params: false,
 })
 

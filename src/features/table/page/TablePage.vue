@@ -63,7 +63,7 @@ setTimeout(() => {
 const role_filters: FilterBy[] = [
   {
     name: 'role',
-    label: 'Rol',
+    label: 'Role',
     show_value_on_badge: true,
     options: [
       { label: 'Admin', value: 'Admin' },
@@ -73,11 +73,11 @@ const role_filters: FilterBy[] = [
   },
   {
     name: 'status',
-    label: 'Estado',
+    label: 'Status',
     only_cancellable: false,
     options: [
-      { label: 'Activo', value: 'active' },
-      { label: 'Inactivo', value: 'inactive' },
+      { label: 'Active', value: 'active' },
+      { label: 'Inactive', value: 'inactive' },
     ],
   },
 ]
@@ -134,7 +134,7 @@ const paginated_data = computed((): PaginationResponse<User> => {
 })
 
 const user_expandable = create_text_field<User>({
-  label: 'Email Completo',
+  label: 'Full Email',
   name: 'email',
   getValue: (row: User) => row.email,
 })
@@ -147,7 +147,7 @@ const fields: TableField<User, any>[] = [
     options: { sortable: true },
   }),
   create_text_field<User>({
-    label: 'Nombre',
+    label: 'Name',
     name: 'name',
     getValue: (row: User) => row.name,
     options: { sortable: true },
@@ -158,7 +158,7 @@ const fields: TableField<User, any>[] = [
     getValue: (row: User) => row.email,
   }),
   create_table_field<User, typeof UiBadge>({
-    label: 'Rol',
+    label: 'Role',
     component: UiBadge,
     name: 'role',
     getInputs: (row: User) => ({
@@ -167,16 +167,16 @@ const fields: TableField<User, any>[] = [
     }),
   }),
   create_table_field<User, typeof UiBadge>({
-    label: 'Estado',
+    label: 'Status',
     component: UiBadge,
     name: 'status',
     getInputs: (row: User) => ({
-      label: row.status === 'active' ? 'Activo' : 'Inactivo',
+      label: row.status === 'active' ? 'Active' : 'Inactive',
       variant: row.status === 'active' ? 'success' : 'error',
     }),
   }),
   create_html_field<User>({
-    label: 'Creado',
+    label: 'Created',
     name: 'created_at',
     getValue: (row: User) =>
       `<span class="font-medium text-base-content">${row.created_at}</span>`,
@@ -218,7 +218,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Loading state</h2>
       <p class="text-base-content/70 mb-6">
-        Cuando no se pasa contenido o es <code>undefined</code>, la tabla muestra un spinner de carga.
+        When no content is passed or it's <code>undefined</code>, the table shows a loading spinner.
       </p>
       <UiTable :fields="fields" :content="undefined" />
     </div>
@@ -229,7 +229,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Default table</h2>
       <p class="text-base-content/70 mb-6">
-        Tabla básica con clases DaisyUI. Muestra los datos sin modificadores adicionales.
+        Basic table with DaisyUI classes. Displays data without additional modifiers.
       </p>
       <UiTable :fields="fields" :content="paginated_data" />
     </div>
@@ -240,7 +240,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Zebra</h2>
       <p class="text-base-content/70 mb-6">
-        Con <code>:zebra="true"</code> se aplica el estilo de filas alternadas.
+        With <code>:zebra="true"</code> the alternating row style is applied.
       </p>
       <UiTable :fields="fields" :content="paginated_data" :zebra="true" />
     </div>
@@ -251,7 +251,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Bordered</h2>
       <p class="text-base-content/70 mb-6">
-        Con <code>:bordered="true"</code> se añade un borde y fondo alrededor de la tabla.
+        With <code>:bordered="true"</code> a border and background are added around the table.
       </p>
       <UiTable :fields="fields" :content="paginated_data" :bordered="true" />
     </div>
@@ -262,8 +262,8 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With expandable rows</h2>
       <p class="text-base-content/70 mb-6">
-        Cada fila se puede expandir para mostrar información adicional usando la prop
-        <code>:expandable</code>.
+        Each row can be expanded to show additional information using the
+        <code>:expandable</code> prop.
       </p>
       <UiTable :fields="fields" :expandable="user_expandable" :content="paginated_data" />
     </div>
@@ -274,8 +274,8 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With sorting</h2>
       <p class="text-base-content/70 mb-6">
-        Las columnas con <code>options: { sortable: true }</code> permiten ordenar los
-        datos. Haz clic en ID, Nombre o Creado.
+        Columns with <code>options: { sortable: true }</code> allow sorting the
+        data. Click on ID, Name, or Created.
       </p>
       <UiTable :fields="fields" :content="paginated_data" @on_sort="on_sort" />
     </div>
@@ -286,8 +286,8 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Table sizes</h2>
       <p class="text-base-content/70 mb-6">
-        DaisyUI ofrece cinco tamaños: <code>xs</code>, <code>sm</code>, <code>md</code>,
-        <code>lg</code> y <code>xl</code>.
+        DaisyUI offers five sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+        <code>lg</code> and <code>xl</code>.
       </p>
       <div class="space-y-8">
         <div>
@@ -319,7 +319,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Table with pin-rows</h2>
       <p class="text-base-content/70 mb-6">
-        Con <code>:pin_rows="true"</code> el encabezado se mantiene fijo al hacer scroll vertical.
+        With <code>:pin_rows="true"</code> the header stays fixed when scrolling vertically.
       </p>
       <div class="max-h-64 overflow-y-auto rounded-box border border-base-content/5">
         <UiTable :fields="fields" :content="paginated_data" :pin_rows="true" />
@@ -332,7 +332,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Empty state</h2>
       <p class="text-base-content/70 mb-6">
-        Cuando no hay datos, se muestra un mensaje indicando que no se encontraron registros.
+        When there is no data, a message is shown indicating no records were found.
       </p>
       <UiTable
         :fields="fields"
@@ -346,7 +346,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With search</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>UiTableSearch</code> en el slot <code>pre-table</code> para añadir un buscador.
+        Use <code>UiTableSearch</code> in the <code>pre-table</code> slot to add a search field.
       </p>
       <UiTable :fields="fields" :content="paginated_data">
         <template #pre-table>
@@ -363,8 +363,8 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With limits</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>UiTableLimits</code> en el slot <code>pre-table</code> para controlar elementos
-        por página.
+        Use <code>UiTableLimits</code> in the <code>pre-table</code> slot to control items
+        per page.
       </p>
       <UiTable :fields="fields" :content="paginated_data">
         <template #pre-table>
@@ -383,8 +383,8 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With filters</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>UiTableFilters</code> para filtrar por Rol y Estado. Al activar un filtro se
-        muestra como badge.
+        Use <code>UiTableFilters</code> to filter by Role and Status. Activating a filter shows it
+        as a badge.
       </p>
       <UiTable :fields="fields" :content="paginated_data">
         <template #pre-table>
@@ -435,7 +435,7 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">Full featured</h2>
       <p class="text-base-content/70 mb-6">
-        Combinación de todos los módulos: search, filters, limits, pagination, sorting y expandable
+        Combination of all modules: search, filters, limits, pagination, sorting, and expandable
         rows.
       </p>
       <UiTable
@@ -487,9 +487,9 @@ function on_active_change(filters: Record<string, unknown>): void {
     <div>
       <h2 class="text-2xl font-bold mb-2">With query params support</h2>
       <p class="text-base-content/70 mb-6">
-        Con <code>:use_params="true"</code> todos los filtros sincronizan automáticamente con los
-        query params de la URL (<code>?search=...&page=2&role=Admin</code>). Los cambios persisten al
-        recargar la página y permiten compartir URLs con filtros activos.
+        With <code>:use_params="true"</code> all filters sync automatically with the URL
+        query params (<code>?search=...&page=2&role=Admin</code>). Changes persist on page
+        reload and allow sharing URLs with active filters.
       </p>
       <UiTable
         :fields="fields"

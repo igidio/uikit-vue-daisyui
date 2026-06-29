@@ -6,12 +6,12 @@ const drawer_service = useDrawer()
 
 <template>
   <ul class="menu">
-    <li class="menu-title"><span>Menú</span></li>
+    <li class="menu-title"><span>Menu</span></li>
     <li>
-      <button class="btn btn-ghost justify-start" @click="drawer_service.close()">Inicio</button>
+      <button class="btn btn-ghost justify-start" @click="drawer_service.close()">Home</button>
     </li>
-    <li><button class="btn btn-ghost justify-start">Perfil</button></li>
-    <li><button class="btn btn-ghost justify-start">Ajustes</button></li>
-    <li><button class="btn btn-ghost justify-start">Ayuda</button></li>
+    <li><button class="btn btn-ghost justify-start">Profile</button></li>
+    <li><button class="btn btn-ghost justify-start">Settings</button></li>
+    <li><button class="btn btn-ghost justify-start">Help</button></li>
   </ul>
 </template>

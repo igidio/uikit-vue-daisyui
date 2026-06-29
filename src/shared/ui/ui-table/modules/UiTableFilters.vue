@@ -19,7 +19,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	label: "Filtrar por:",
+	label: "Filter by:",
 	use_params: false,
 });
 

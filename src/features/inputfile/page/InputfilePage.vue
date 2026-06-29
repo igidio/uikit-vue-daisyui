@@ -16,8 +16,8 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">File Input</h2>
       <p class="text-base-content/70 mb-6">
-        El componente <code>ui-inputfile</code> es un campo de selección de archivos con estilos
-        DaisyUI.
+        The <code>ui-inputfile</code> component is a file selection field with DaisyUI
+        styles.
       </p>
       <div class="flex flex-wrap items-center gap-4">
         <UiInputfile />
@@ -30,7 +30,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">Sizes</h2>
       <p class="text-base-content/70 mb-6">
-        Tamaños disponibles: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> y
+        Sizes available: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> and
         <code>xl</code>.
       </p>
       <div class="flex flex-col gap-4 max-w-sm">
@@ -47,7 +47,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">Colors</h2>
       <p class="text-base-content/70 mb-6">
-        Usa el prop <code>color</code> para cambiar entre los colores disponibles.
+        Use the <code>color</code> prop to switch between the available colors.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg">
         <div v-for="c in colors" :key="c" class="flex flex-col gap-1">
@@ -63,7 +63,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">Filter by file type</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>accept</code> para restringir los tipos de archivo permitidos.
+        Use <code>accept</code> to restrict the allowed file types.
       </p>
       <div class="flex flex-col gap-4 max-w-sm">
         <div class="flex flex-col gap-1">
@@ -83,7 +83,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">Multiple files</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>:multiple="true"</code> para permitir la selección de múltiples archivos.
+        Use <code>:multiple="true"</code> to allow selecting multiple files.
       </p>
       <div class="flex flex-col gap-1 max-w-sm">
         <span class="text-xs text-base-content/60">Multiple files</span>
@@ -97,7 +97,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div>
       <h2 class="text-2xl font-bold mb-2">Disabled</h2>
       <p class="text-base-content/70 mb-6">
-        El input se puede deshabilitar con el prop <code>disabled</code>.
+        The input can be disabled with the <code>disabled</code> prop.
       </p>
       <div class="flex flex-col gap-1 max-w-sm">
         <span class="text-xs text-base-content/60">Disabled</span>
@@ -110,7 +110,7 @@ const sizes: InputfileSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <!-- Combined -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Combined</h2>
-      <p class="text-base-content/70 mb-6">Todas las propiedades combinadas.</p>
+      <p class="text-base-content/70 mb-6">All properties combined.</p>
       <div class="flex flex-col gap-1 max-w-sm">
         <span class="text-xs text-base-content/60">Avatar upload</span>
         <UiInputfile color="primary" size="lg" accept="image/*" />

@@ -10,7 +10,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	label: "Mostrar:",
+	label: "Show:",
 	use_params: false,
 });
 

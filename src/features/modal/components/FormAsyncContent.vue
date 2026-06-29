@@ -6,13 +6,13 @@ const modal_service = useModal()
 
 const buttons: ModalFormButton[] = [
   {
-    label: 'Cancelar',
+    label: 'Cancel',
     variant: 'secondary',
     size: 'sm',
     action: () => modal_service.close(),
   },
   {
-    label: 'Guardando...',
+    label: 'Saving...',
     icon: 'loading',
     variant: 'success',
     size: 'sm',
@@ -23,14 +23,14 @@ const buttons: ModalFormButton[] = [
 </script>
 
 <template>
-  <ModalForm title="Guardar cambios" :buttons="buttons">
+  <ModalForm title="Save changes" :buttons="buttons">
     <div class="space-y-3">
       <p class="text-sm text-base-content/70">
-        Ejemplo con botón que muestra estado de carga (<code>spin</code> + <code>disabled</code>).
+        Example with a button showing loading state (<code>spin</code> + <code>disabled</code>).
       </p>
       <p class="text-sm text-base-content/70">
-        Cuando una acción es asíncrona, todos los botones del footer se deshabilitan automáticamente
-        hasta que la acción finalice.
+        When an action is async, all footer buttons are automatically disabled
+        until the action completes.
       </p>
     </div>
   </ModalForm>

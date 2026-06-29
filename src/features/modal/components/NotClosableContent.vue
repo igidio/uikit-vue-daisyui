@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3 class="text-lg font-bold">Modal no cerrable</h3>
+    <h3 class="text-lg font-bold">Non-Closable Modal</h3>
     <p class="py-4">
-      Este modal no se puede cerrar con ESC ni con clic fuera. Usa el botón «Cerrar modal» de la
-      página.
+      This modal cannot be closed with ESC or by clicking outside. Use the «Close modal» button on
+      the page.
     </p>
   </div>
 </template>

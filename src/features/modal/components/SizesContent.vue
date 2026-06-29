@@ -13,14 +13,14 @@ const size_map: Record<string, string> = {
 
 <template>
   <div>
-    <h3 class="text-lg font-bold">Tamaños</h3>
+    <h3 class="text-lg font-bold">Sizes</h3>
     <p class="py-4">
-      Tamaño actual: <code>{{ modal_service.size.value }}</code>
+      Current size: <code>{{ modal_service.size.value }}</code>
       ({{ size_map[modal_service.size.value] ?? '' }})
     </p>
     <div class="modal-action">
       <form method="dialog">
-        <button class="btn">Cerrar</button>
+        <button class="btn">Close</button>
       </form>
     </div>
   </div>

@@ -3,14 +3,14 @@ import ModalForm from '@/shared/components/modal-form/ModalForm.vue'
 </script>
 
 <template>
-  <ModalForm title="Modal con título" :closable="true">
+  <ModalForm title="Modal with title" :closable="true">
     <div class="space-y-3">
       <p class="text-sm text-base-content/70">
-        Este modal usa <code>modal-form</code> con los inputs <code>title</code> y
-        <code>closable</code>. Se renderiza la interfaz por defecto.
+        This modal uses <code>modal-form</code> with the <code>title</code> and
+        <code>closable</code> inputs. The default interface is rendered.
       </p>
       <p class="text-sm text-base-content/70">
-        El botón de cerrar (X) invoca a <code>modal_service.close()</code> automáticamente.
+        The close button (X) calls <code>modal_service.close()</code> automatically.
       </p>
     </div>
   </ModalForm>

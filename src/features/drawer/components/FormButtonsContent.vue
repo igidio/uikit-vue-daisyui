@@ -6,13 +6,13 @@ const drawer_service = useDrawer()
 
 const buttons: DrawerFormButton[] = [
   {
-    label: 'Cancelar',
+    label: 'Cancel',
     variant: 'secondary',
     size: 'sm',
     action: () => drawer_service.close(),
   },
   {
-    label: 'Guardar',
+    label: 'Save',
     variant: 'primary',
     size: 'sm',
     icon: 'success',
@@ -21,13 +21,13 @@ const buttons: DrawerFormButton[] = [
 </script>
 
 <template>
-  <DrawerForm title="Drawer con botones de acción" :buttons="buttons">
+  <DrawerForm title="Drawer with action buttons" :buttons="buttons">
     <div class="space-y-3 px-4">
       <p class="text-sm text-base-content/70">
-        Los botones del footer se definen mediante el input
-        <code>buttons</code>, que acepta un arreglo con las mismas propiedades de
+        The footer buttons are defined using the
+        <code>buttons</code> input, which accepts an array with the same props as
         <code>UiButton</code>
-        más un callback
+        plus an optional</p>
         <code>action</code>
         opcional.
       </p>

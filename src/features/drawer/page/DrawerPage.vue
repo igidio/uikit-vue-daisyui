@@ -13,16 +13,16 @@ const drawer_service = useDrawer()
 
 <template>
   <section class="space-y-12">
-    <!-- Drawer básico (start) -->
+    <!-- Basic Drawer (start) -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Drawer básico</h2>
+      <h2 class="text-2xl font-bold mb-2">Basic Drawer</h2>
       <p class="text-base-content/70 mb-6">
-        Drawer lateral con contenido cargado desde el servicio global
+        Side drawer with content loaded from the global
         <code>DrawerService</code>.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir drawer izquierdo"
+          label="Open left drawer"
           variant="primary"
           @click="drawer_service.open_with_content({ component: BasicContent, side: 'start' })"
         />
@@ -33,13 +33,13 @@ const drawer_service = useDrawer()
 
     <!-- Drawer desde la derecha (end) -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">Drawer desde la derecha (end)</h2>
+      <h2 class="text-2xl font-bold mb-2">Drawer from the right (end)</h2>
       <p class="text-base-content/70 mb-6">
-        Usando <code>side="end"</code> el drawer se abre desde el lado derecho.
+        Using <code>side="end"</code> the drawer opens from the right side.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir drawer derecho"
+          label="Open right drawer"
           variant="primary"
           @click="drawer_service.open_with_content({ component: BasicContent, side: 'end' })"
         />
@@ -48,16 +48,16 @@ const drawer_service = useDrawer()
 
     <hr class="border-base-300" />
 
-    <!-- DrawerForm con título -->
+    <!-- DrawerForm with title -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">DrawerForm con título</h2>
+      <h2 class="text-2xl font-bold mb-2">DrawerForm with title</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>drawer-form</code> con los inputs <code>title</code> y <code>closable</code>. El
-        botón de cerrar (X) invoca a <code>drawer_service.close()</code> automáticamente.
+        Use <code>drawer-form</code> with the <code>title</code> and <code>closable</code> inputs. The
+        close button (X) calls <code>drawer_service.close()</code> automatically.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir con título"
+          label="Open with title"
           variant="primary"
           @click="drawer_service.open_with_content({ component: FormTitleContent, side: 'start' })"
         />
@@ -68,14 +68,14 @@ const drawer_service = useDrawer()
 
     <!-- DrawerForm con botones -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">DrawerForm con botones en footer</h2>
+      <h2 class="text-2xl font-bold mb-2">DrawerForm with buttons in footer</h2>
       <p class="text-base-content/70 mb-6">
-        Usa <code>drawer-form</code> con <code>title</code> + <code>buttons</code>. Cada botón acepta
-        todas las props de <code>ui-button</code>.
+        Use <code>drawer-form</code> with <code>title</code> + <code>buttons</code>. Each button accepts
+        all props from <code>ui-button</code>.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir con botones"
+          label="Open with buttons"
           variant="primary"
           @click="drawer_service.open_with_content({ component: FormButtonsContent, side: 'start' })"
         />
@@ -84,16 +84,16 @@ const drawer_service = useDrawer()
 
     <hr class="border-base-300" />
 
-    <!-- DrawerForm con acción asíncrona -->
+    <!-- DrawerForm with async action -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">DrawerForm con acción asíncrona</h2>
+      <h2 class="text-2xl font-bold mb-2">DrawerForm with async action</h2>
       <p class="text-base-content/70 mb-6">
-        Botón con <code>action</code> asíncrona. Los botones se deshabilitan mientras la acción está
-        en curso.
+        Button with async <code>action</code>. The buttons are disabled while the action is
+        in progress.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir con acción async"
+          label="Open with async action"
           variant="primary"
           @click="drawer_service.open_with_content({ component: FormAsyncContent, side: 'start' })"
         />
@@ -104,14 +104,14 @@ const drawer_service = useDrawer()
 
     <!-- DrawerForm scrollable -->
     <div>
-      <h2 class="text-2xl font-bold mb-2">DrawerForm scrollable</h2>
+      <h2 class="text-2xl font-bold mb-2">Scrollable DrawerForm</h2>
       <p class="text-base-content/70 mb-6">
-        Si el contenido del drawer es muy largo, se muestra scroll automáticamente en el área del
-        body.
+        If the drawer content is too long, scroll is automatically shown in the body
+        area.
       </p>
       <div class="flex gap-2">
         <UiButton
-          label="Abrir drawer con scroll"
+          label="Open drawer with scroll"
           variant="primary"
           @click="drawer_service.open_with_content({ component: FormScrollableContent, side: 'start' })"
         />

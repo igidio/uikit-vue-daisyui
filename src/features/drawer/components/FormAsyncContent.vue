@@ -6,13 +6,13 @@ const drawer_service = useDrawer()
 
 const buttons: DrawerFormButton[] = [
   {
-    label: 'Cancelar',
+    label: 'Cancel',
     variant: 'secondary',
     size: 'sm',
     action: () => drawer_service.close(),
   },
   {
-    label: 'Guardando...',
+    label: 'Saving...',
     icon: 'loading',
     variant: 'primary',
     size: 'sm',
@@ -23,10 +23,10 @@ const buttons: DrawerFormButton[] = [
 </script>
 
 <template>
-  <DrawerForm title="Guardar cambios" :buttons="buttons">
+  <DrawerForm title="Save changes" :buttons="buttons">
     <div class="space-y-3 px-4">
       <p class="text-sm text-base-content/70">
-        Ejemplo con botón que muestra estado de carga (spin + disabled).
+        Example with a button showing loading state (spin + disabled).
       </p>
     </div>
   </DrawerForm>

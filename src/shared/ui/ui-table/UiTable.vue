@@ -189,8 +189,8 @@ function cell_classes(field: TableField<T>): string {
             >
               <div class="flex flex-col items-center gap-3 py-6">
                 <UiIcon icon="table" class="text-3xl text-base-content/60" />
-                <span class="text-base-content text-base font-medium">No hay ningún registro</span>
-                <span class="text-base-content/70 text-sm">No se encontraron datos que coincidan con los criterios actuales.</span>
+                <span class="text-base-content text-base font-medium">No records found</span>
+                <span class="text-base-content/70 text-sm">No data matching the current criteria was found.</span>
               </div>
             </td>
           </tr>
