@@ -11,7 +11,7 @@ interface Props {
 	size?: InputSize;
 	readonly?: boolean;
 	disabled?: boolean;
-  id?: string;
+	id?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
 	size: "md",
 	readonly: false,
 	disabled: false,
-  id: undefined,
+	id: undefined,
 });
 
 const model_value = defineModel<string | number>({ default: "" });
@@ -39,15 +39,13 @@ const field_state = inject(FIELD_STATE_KEY, null);
 </script>
 
 <template>
-	<div>
-		<input
-			:id="id || field_state?.id.value"
-			:type="type"
-			:placeholder="placeholder"
-			:readonly="readonly"
-			:disabled="disabled"
-			:class="input_classes"
-			v-model="model_value"
-		/>
-	</div>
+	<input
+		:id="id || field_state?.id.value"
+		:type="type"
+		:placeholder="placeholder"
+		:readonly="readonly"
+		:disabled="disabled"
+		:class="input_classes"
+		v-model="model_value"
+	/>
 </template>

@@ -34,9 +34,6 @@ provide(FIELD_STATE_KEY, {
       <slot name="right" />
     </div>
     <slot />
-
-    {{  touched }}
-
     <div :class="isErrorFixed ? 'min-h-5' : ''">
       <p v-if="touched && error" class="text-error text-xs">
         {{ error }}
