@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRef } from 'vue'
+import { watch, toRef } from 'vue'
 import UiButton from '@/shared/ui/ui-button/UiButton.vue'
 import { useTableParams } from './use-table-params'
 
@@ -24,6 +24,15 @@ if (props.use_params) {
     current.value = Number(limit)
   }
 }
+
+watch(
+  () => route.query['limit'],
+  (limit) => {
+    if (props.use_params && limit) {
+      current.value = Number(limit)
+    }
+  },
+)
 
 function on_limit_changed(limit: number): void {
   set_param('limit', limit)

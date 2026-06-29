@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRef } from 'vue'
+import { watch, toRef } from 'vue'
 import UiPagination from "@/shared/ui/ui-pagination/UiPagination.vue";
 import { useTableParams } from './use-table-params'
 
@@ -16,17 +16,25 @@ const props = withDefaults(defineProps<Props>(), {
 	use_params: false,
 });
 
-const { set_param, remove_param, route } = useTableParams(toRef(props, 'use_params'))
+const { set_param, route } = useTableParams(toRef(props, 'use_params'))
 
 const current_page = defineModel<number>("current_page", { default: 1 });
 
-// Restore from query params on mount
 if (props.use_params) {
 	const page = route.query["page"];
 	if (page) {
 		current_page.value = Number(page);
 	}
 }
+
+watch(
+	() => route.query["page"],
+	(page) => {
+		if (props.use_params && page) {
+			current_page.value = Number(page);
+		}
+	},
+);
 
 function on_page_changed(page: number): void {
 	set_param("page", page > 1 ? page : null);

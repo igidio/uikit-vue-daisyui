@@ -29,7 +29,6 @@ const emit = defineEmits<{
   on_sort: [event: { sort_by: string | null; order: 'asc' | 'desc' | null }]
 }>()
 
-// Sort state
 const sort_column = ref<string | null>(null)
 const sort_order = ref<'asc' | 'desc' | null>(null)
 const expanded_rows = ref<Set<number>>(new Set())
@@ -199,7 +198,6 @@ function cell_classes(field: TableField<T>): string {
             </td>
           </tr>
 
-          <!-- Data rows -->
           <template v-else>
             <template v-for="(row, row_idx) in content!.data" :key="row_idx">
               <tr :class="['border-b border-base-200', row_classes(row_idx)]">

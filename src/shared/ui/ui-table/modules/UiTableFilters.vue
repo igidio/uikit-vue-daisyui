@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toRef } from "vue";
 import UiBadge from "@/shared/ui/ui-badge/UiBadge.vue";
+import UiIcon from "@/shared/ui/ui-icon/UiIcon.vue";
 import { useTableParams } from "./use-table-params";
 
 export interface FilterBy {
@@ -30,7 +31,6 @@ const active = defineModel<Record<string, unknown>>("active", {
 	default: () => ({}),
 });
 
-// Restore from query params on mount
 if (props.use_params) {
 	const active_filters: Record<string, unknown> = {};
 	for (const filter of props.filters) {
@@ -85,20 +85,7 @@ function clear_filter(filter_name: string): void {
 			<details v-else class="dropdown">
 				<summary class="btn btn-ghost btn-sm">
 					{{ filter.label }}
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-4 w-4 ml-1"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M19 9l-7 7-7-7"
-						/>
-					</svg>
+					<UiIcon icon="chevron_down" class="h-4 w-4 ml-1" />
 				</summary>
 				<ul
 					class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"

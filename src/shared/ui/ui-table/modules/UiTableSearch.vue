@@ -19,7 +19,6 @@ const value = defineModel<string>('value', { default: '' })
 
 let search_timer: ReturnType<typeof setTimeout> | null = null
 
-// Restore from query params on mount
 if (props.use_params) {
   const search = route.query['search']
   if (search) {
