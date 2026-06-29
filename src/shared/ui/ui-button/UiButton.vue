@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { IconValue } from '@/shared/data/icons'
 import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
 import { button_sizes, button_variants, button_styles, button_shapes, type UiButtonSizes, type UiButtonStyle, type UiButtonShape } from './ui-button-properties'
@@ -30,10 +31,9 @@ const props = withDefaults(defineProps<Props>(), {
   block: false,
 })
 
-const button_classes: string = (() => {
+const static_classes: string = (() => {
   const c: string[] = ['btn']
   c.push(button_sizes[props.size as UiButtonSizes])
-  c.push(button_variants[props.variant as UiColors])
   if (props.style_type) {
     c.push(button_styles[props.style_type])
   }
@@ -45,10 +45,12 @@ const button_classes: string = (() => {
   }
   return c.filter(Boolean).join(' ')
 })()
+
+const variant_class = computed(() => button_variants[props.variant as UiColors])
 </script>
 
 <template>
-  <button :class="button_classes" :disabled="disabled" :type="type">
+  <button :class="[static_classes, variant_class]" :disabled="disabled" :type="type">
     <slot>
       <div class="flex items-center gap-2">
         <UiIcon v-if="icon" :icon="icon" :class="{ 'animate-spin': spin }" />

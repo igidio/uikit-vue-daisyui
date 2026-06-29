@@ -214,7 +214,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
 <template>
   <section class="space-y-12">
-    <!-- Loading -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Loading state</h2>
       <p class="text-base-content/70 mb-6">
@@ -225,7 +225,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Default table -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Default table</h2>
       <p class="text-base-content/70 mb-6">
@@ -236,7 +236,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Zebra -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Zebra</h2>
       <p class="text-base-content/70 mb-6">
@@ -247,7 +247,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Bordered -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Bordered</h2>
       <p class="text-base-content/70 mb-6">
@@ -258,7 +258,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With expandable rows -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With expandable rows</h2>
       <p class="text-base-content/70 mb-6">
@@ -270,7 +270,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With sorting -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With sorting</h2>
       <p class="text-base-content/70 mb-6">
@@ -282,7 +282,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Table sizes -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Table sizes</h2>
       <p class="text-base-content/70 mb-6">
@@ -315,7 +315,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With pin-rows -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Table with pin-rows</h2>
       <p class="text-base-content/70 mb-6">
@@ -328,7 +328,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Empty state -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Empty state</h2>
       <p class="text-base-content/70 mb-6">
@@ -342,7 +342,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With search -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With search</h2>
       <p class="text-base-content/70 mb-6">
@@ -359,7 +359,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With limits -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With limits</h2>
       <p class="text-base-content/70 mb-6">
@@ -379,7 +379,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With filters -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With filters</h2>
       <p class="text-base-content/70 mb-6">
@@ -399,7 +399,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With pagination -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With pagination</h2>
       <p class="text-base-content/70 mb-6">
@@ -431,7 +431,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- Full featured: search + filters + limits + pagination + sorting + expandable -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">Full featured</h2>
       <p class="text-base-content/70 mb-6">
@@ -483,7 +483,7 @@ function on_active_change(filters: Record<string, unknown>): void {
 
     <hr class="border-base-300" />
 
-    <!-- With query params support -->
+    
     <div>
       <h2 class="text-2xl font-bold mb-2">With query params support</h2>
       <p class="text-base-content/70 mb-6">

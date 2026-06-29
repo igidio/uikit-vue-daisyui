@@ -39,7 +39,6 @@ const sortable_columns = computed(() =>
     .map((f) => f.name as string),
 )
 
-// Table classes
 const table_classes = computed(() => {
   const classes = ['table']
   classes.push(table_sizes[props.size])
@@ -76,7 +75,6 @@ function showing_to(): number {
   return (c.offset || 0) + (c.data?.length || 0)
 }
 
-// Sort logic
 function sort_by(name: string): void {
   if (!name || !sortable_columns.value.includes(name)) return
 
@@ -122,7 +120,6 @@ function toggle_expanded(index: number): void {
   expanded_rows.value = next
 }
 
-// Row/cell helpers
 function row_classes(row_idx: number): string {
   return is_expanded(row_idx) ? 'bg-base-200' : ''
 }
