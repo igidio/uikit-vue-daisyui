@@ -11,7 +11,7 @@ function get_initial_mode(): ThemeMode {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-export const useThemeStore = defineStore('theme', () => {
+export const use_theme_store = defineStore('theme', () => {
   const mode = ref<ThemeMode>(get_initial_mode())
 
   function initialize(): void {

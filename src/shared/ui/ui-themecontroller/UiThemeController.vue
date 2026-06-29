@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
-import { useThemeStore } from '@/shared/stores/theme.store'
+import { use_theme_store } from '@/shared/stores/theme.store'
 import type { UiThemeControllerType } from './ui-themecontroller.properties'
 import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
 
-const theme_store = useThemeStore()
+const theme_store = use_theme_store()
 
 const props = withDefaults(defineProps<{
   type?: UiThemeControllerType

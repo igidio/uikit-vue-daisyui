@@ -191,7 +191,7 @@ function on_sort(event: { sort_by: string | null; order: 'asc' | 'desc' | null }
   sort_state.value = event
 }
 
-function on_search(value: string): void {
+function on_search(value: string): void{
   search_value.value = value
   search_term.value = value || null
   current_page.value = 1
