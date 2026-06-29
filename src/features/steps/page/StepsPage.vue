@@ -40,12 +40,12 @@ const mixed_data: UiStepsItem[] = [
 
 <template>
   <section class="space-y-12">
-    <!-- Basic Steps (vertical by default) -->
+    <!-- Basic Steps (horizontal by default) -->
     <div>
       <h2 class="text-2xl font-bold mb-2">Steps</h2>
-      <p class="text-base-content/70 mb-6">Default vertical steps with sequential numbering.</p>
+      <p class="text-base-content/70 mb-6">Default horizontal steps with sequential numbering.</p>
       <div class="flex justify-center py-4">
-        <UiSteps :data="basic_data" direction="vertical" />
+        <UiSteps :data="basic_data" />
       </div>
     </div>
 
@@ -57,8 +57,8 @@ const mixed_data: UiStepsItem[] = [
       <p class="text-base-content/70 mb-6">
         Set <code>direction="horizontal"</code> for a horizontal layout.
       </p>
-      <div class="overflow-x-auto py-4">
-        <UiSteps :data="horizontal_data" direction="horizontal" />
+      <div class="flex justify-center py-4">
+        <UiSteps :data="horizontal_data" direction="vertical" />
       </div>
     </div>
 
@@ -71,7 +71,7 @@ const mixed_data: UiStepsItem[] = [
         Use the <code>color</code> prop to apply a step color modifier.
       </p>
       <div class="flex justify-center py-4">
-        <UiSteps :data="colorful_data" direction="vertical" />
+        <UiSteps :data="colorful_data" />
       </div>
     </div>
 
@@ -84,7 +84,7 @@ const mixed_data: UiStepsItem[] = [
         Provide an <code>icon</code> to replace the sequential number inside the step circle.
       </p>
       <div class="flex justify-center py-4">
-        <UiSteps :data="icon_data" direction="vertical" />
+        <UiSteps :data="icon_data" />
       </div>
     </div>
 

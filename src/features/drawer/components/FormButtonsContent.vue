@@ -26,8 +26,7 @@ const buttons: DrawerFormButton[] = [
       <p class="text-sm text-base-content/70">
         The footer buttons are defined using the
         <code>buttons</code> input, which accepts an array with the same props as
-        <code>UiButton</code>
-        plus an optional</p>
+        <code>UiButton</code> plus an optional
         <code>action</code>
         opcional.
       </p>
