@@ -8,6 +8,14 @@ export const avatar_sizes: Record<UiAvatarSizes, string> = {
   xl: 'w-32',
 }
 
+export const avatar_placeholder_sizes: Record<UiAvatarSizes, string> = {
+  xs: 'text-xs',
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-3xl',
+  xl: 'text-4xl',
+}
+
 export type UiAvatarVariants = 'none' | 'online' | 'offline'
 
 export const avatar_variants: Record<UiAvatarVariants, string> = {

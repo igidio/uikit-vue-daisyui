@@ -12,12 +12,12 @@ export const radialprogress_colors: Record<UiRadialprogressColors, string> = {
 }
 
 export const radialprogress_backgrounds: Record<UiRadialprogressColors, string> = {
-  primary: 'stroke-primary',
-  secondary: 'stroke-secondary',
-  accent: 'stroke-accent',
-  neutral: 'stroke-neutral',
-  info: 'stroke-info',
-  success: 'stroke-success',
-  warning: 'stroke-warning',
-  error: 'stroke-error',
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
+  accent: 'bg-accent',
+  neutral: 'bg-neutral',
+  info: 'bg-info',
+  success: 'bg-success',
+  warning: 'bg-warning',
+  error: 'bg-error',
 }

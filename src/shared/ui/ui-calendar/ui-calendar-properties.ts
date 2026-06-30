@@ -9,3 +9,17 @@ export const calendar_sizes: Record<CalendarSize, string> = {
   lg: 'input-lg',
   xl: 'input-xl',
 }
+
+export type CalendarColor = UiColors
+
+export const calendar_colors: Record<CalendarColor, string> = {
+  primary: 'input-primary',
+  secondary: 'input-secondary',
+  accent: 'input-accent',
+  neutral: 'input-neutral',
+  info: 'input-info',
+  success: 'input-success',
+  warning: 'input-warning',
+  error: 'input-error',
+  ghost: 'input-ghost',
+}

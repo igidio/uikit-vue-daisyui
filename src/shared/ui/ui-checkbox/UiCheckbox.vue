@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 import { FIELD_STATE_KEY } from '../ui-field/ui-field-injection'
 import type { UiColors } from '@/shared/ui/ui-types'
-import { checkbox_sizes, type CheckboxSize } from './ui-checkbox-properties'
+import { checkbox_sizes, checkbox_colors, type CheckboxSize } from './ui-checkbox-properties'
 
 export interface CheckboxOption {
   label: string
@@ -30,24 +30,12 @@ const field_state = inject(FIELD_STATE_KEY, null)
 
 const model_value = defineModel<any[]>({ default: () => [] })
 
-const color_class: string = (() => {
-  switch (props.color) {
-    case 'primary': return 'checkbox-primary'
-    case 'secondary': return 'checkbox-secondary'
-    case 'accent': return 'checkbox-accent'
-    case 'neutral': return 'checkbox-neutral'
-    case 'info': return 'checkbox-info'
-    case 'success': return 'checkbox-success'
-    case 'warning': return 'checkbox-warning'
-    case 'error': return 'checkbox-error'
-    case 'ghost': return 'checkbox-ghost'
-    default: return ''
-  }
+const checkbox_classes: string = (() => {
+  const classes = ['checkbox']
+  if (props.color) classes.push(checkbox_colors[props.color])
+  classes.push(checkbox_sizes[props.size as CheckboxSize] ?? 'checkbox-md')
+  return classes.join(' ')
 })()
-
-const size_class: string = checkbox_sizes[props.size as CheckboxSize] ?? 'checkbox-md'
-
-const checkbox_classes: string = `checkbox ${color_class} ${size_class}`.trim().replace(/\s+/g, ' ')
 
 function is_checked(value: any): boolean {
   return Array.isArray(model_value.value) && model_value.value.includes(value)

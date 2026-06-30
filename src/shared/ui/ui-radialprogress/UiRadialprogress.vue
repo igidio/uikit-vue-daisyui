@@ -4,42 +4,51 @@ import { radialprogress_colors, radialprogress_backgrounds, type UiRadialprogres
 
 interface Props {
   value?: number
-  color?: UiRadialprogressColors
+  color?: UiRadialprogressColors | null
   background?: UiRadialprogressColors | null
-  size?: number
-  thickness?: number
+  size?: number | null
+  thickness?: number | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: 0,
-  color: 'primary',
+  color: null,
   background: null,
-  size: 4,
-  thickness: 0.5,
+  size: null,
+  thickness: null,
 })
 
 const clamped_value = computed(() => Math.max(0, Math.min(100, props.value ?? 0)))
 
-const circumference = computed(() => 2 * Math.PI * 15.91549430918954) // r=15.9155, dasharray=100
-
-const dash_offset = computed(() => {
-  return circumference.value - (clamped_value.value / 100) * circumference.value
+const progress_style = computed<Record<string, string>>(() => {
+  const style: Record<string, string> = {
+    '--value': String(clamped_value.value),
+  }
+  if (props.size !== null) {
+    style['--size'] = `${props.size}rem`
+  }
+  if (props.thickness !== null) {
+    style['--thickness'] = `${props.thickness}rem`
+  }
+  return style
 })
 
-const color_class = radialprogress_colors[props.color]
-const bg_class = computed(() => props.background ? radialprogress_backgrounds[props.background] : 'stroke-transparent')
-
-const style_vars = computed(() => ({
-  '--size': `${props.size}rem`,
-  '--thickness': `${props.thickness}rem`,
-} as Record<string, string>))
+const progress_classes = computed(() => {
+  const classes = ['radial-progress']
+  if (props.color) {
+    classes.push(radialprogress_colors[props.color])
+  }
+  if (props.background) {
+    classes.push(radialprogress_backgrounds[props.background])
+  }
+  return classes.filter(Boolean).join(' ')
+})
 </script>
 
 <template>
   <div
-    class="radial-progress"
-    :class="[color_class]"
-    :style="style_vars"
+    :class="progress_classes"
+    :style="progress_style"
     role="progressbar"
     :aria-valuenow="clamped_value"
     aria-valuemin="0"

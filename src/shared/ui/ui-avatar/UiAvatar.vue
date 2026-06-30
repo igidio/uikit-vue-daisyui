@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { avatar_sizes, avatar_variants, avatar_shapes, type UiAvatarSizes, type UiAvatarVariants, type UiAvatarShapes } from './ui-avatar-properties'
+import { avatar_sizes, avatar_variants, avatar_shapes, avatar_placeholder_sizes, type UiAvatarSizes, type UiAvatarVariants, type UiAvatarShapes } from './ui-avatar-properties'
 
 interface Props {
   src?: string | null
@@ -51,16 +51,7 @@ const inner_classes: string = (() => {
   return c.join(' ')
 })()
 
-const placeholder_size_class: string = (() => {
-  switch (props.size) {
-    case 'xs': return 'text-xs'
-    case 'sm': return 'text-sm'
-    case 'md': return 'text-base'
-    case 'lg': return 'text-3xl'
-    case 'xl': return 'text-4xl'
-    default: return 'text-base'
-  }
-})()
+const placeholder_size_class: string = avatar_placeholder_sizes[props.size as UiAvatarSizes]
 </script>
 
 <template>
