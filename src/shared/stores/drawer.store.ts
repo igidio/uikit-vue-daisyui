@@ -1,19 +1,14 @@
-import { ref, type VNode, type Component } from 'vue'
+import { ref } from 'vue'
 
 export type DrawerSide = 'start' | 'end'
 
 const is_open = ref(false)
 const side = ref<DrawerSide>('start')
-const content_component = ref<Component | null>(null)
 let on_show_callback: (() => void) | null = null
 let on_hide_callback: (() => void) | null = null
 let on_toggle_callback: (() => void) | null = null
 
 export function useDrawer() {
-  function set_content(component: Component): void {
-    content_component.value = component
-  }
-
   function configure(config: {
     side?: DrawerSide
     on_show?: () => void
@@ -42,21 +37,12 @@ export function useDrawer() {
     if (is_open.value) { close() } else { open() }
   }
 
-  function open_with_content(config: { component: Component; side?: DrawerSide }): void {
-    if (config.side !== undefined) side.value = config.side
-    set_content(config.component)
-    open()
-  }
-
   return {
     is_open,
     side,
-    content_component,
-    set_content,
     configure,
     open,
     close,
     toggle,
-    open_with_content,
   }
 }

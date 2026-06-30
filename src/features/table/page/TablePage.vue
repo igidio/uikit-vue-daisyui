@@ -184,7 +184,6 @@ const fields: TableField<User, any>[] = [
   }),
 ]
 
-// Paginated data for loading demo (uses loading state)
 const loading_content = computed(() => (loading.value ? undefined : paginated_data.value))
 
 function on_sort(event: { sort_by: string | null; order: 'asc' | 'desc' | null }): void {
