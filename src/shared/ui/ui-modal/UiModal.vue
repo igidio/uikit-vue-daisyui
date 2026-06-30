@@ -25,12 +25,7 @@ onMounted(() => {
       <form v-if="modal_service.closable.value" method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
-      <template v-if="modal_service.show_content.value && modal_service.options.value.content">
-        <component
-          :is="modal_service.options.value.content.component"
-          v-bind="modal_service.options.value.content.props"
-        />
-      </template>
+      <div id="ui-modal-panel"></div>
     </div>
     <form v-if="show_backdrop()" method="dialog" class="modal-backdrop">
       <button>close</button>

@@ -1,4 +1,4 @@
-import { ref, type VNode, type Component } from 'vue'
+import { ref } from 'vue'
 
 export type UiModalBackdrop = 'static' | 'dynamic'
 export type UiModalSize = 'sm' | 'md' | 'lg' | 'xl'
@@ -10,21 +10,10 @@ export const ui_modal_sizes: Record<UiModalSize, string> = {
   xl: 'max-w-7xl',
 }
 
-interface ModalContentSection {
-  component?: Component
-  props?: Record<string, any>
-}
-
-interface ModalOptionsExtended {
-  content?: ModalContentSection
-}
-
-const options = ref<ModalOptionsExtended>({})
 const backdrop = ref<UiModalBackdrop>('dynamic')
-const closable = ref(false)
+const closable = ref(true)
 const size = ref<UiModalSize>('sm')
 const is_open = ref(false)
-const show_content = ref(false)
 let modal_el: HTMLDialogElement | null = null
 let on_show_callback: (() => void) | null = null
 let on_hide_callback: (() => void) | null = null
@@ -73,38 +62,15 @@ export function useModal() {
     if (is_open.value) { close() } else { open() }
   }
 
-  function set_content(component: Component | null, props?: Record<string, any>): void {
-    options.value = {
-      content: component ? { component, props } : undefined,
-    }
-    show_content.value = !!component
-  }
-
-  async function open_with_content(config: {
-    component: Component
-    props?: Record<string, any>
-    backdrop?: UiModalBackdrop
-    closable?: boolean
-    size?: UiModalSize
-  }): Promise<void> {
-    configure({ backdrop: config.backdrop, closable: config.closable, size: config.size })
-    set_content(config.component, config.props)
-    open()
-  }
-
   return {
-    options,
     backdrop,
     closable,
     size,
     is_open,
-    show_content,
     set_element,
-    set_content,
     configure,
     open,
     close,
     toggle,
-    open_with_content,
   }
 }
