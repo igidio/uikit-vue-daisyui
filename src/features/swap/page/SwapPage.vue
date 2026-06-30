@@ -7,11 +7,6 @@ import UiIcon from '@/shared/ui/ui-icon/UiIcon.vue'
 const selected_text = ref('on')
 const selected_icon = ref('sun')
 const selected_effect = ref('😈')
-
-const emoji_options = [
-  { value: '😈', emoji: '😈' },
-  { value: '😇', emoji: '😇' },
-]
 </script>
 
 <template>
@@ -81,9 +76,13 @@ const emoji_options = [
     <div>
       <h2 class="text-2xl font-bold mb-2">Swap with Flip Effect</h2>
       <p class="text-base-content/70 mb-6">Emoji swap with a flip animation.</p>
+      
       <UiSwap v-model="selected_effect" :flip="true">
-        <UiSwapItem v-for="option in emoji_options" :key="option.value" :value="option.value">
-          {{ option.emoji }}
+        <UiSwapItem value="😈">
+          <span class="text-2xl">😈</span>
+        </UiSwapItem>
+        <UiSwapItem value="😇">
+          <span class="text-2xl">😇</span>
         </UiSwapItem>
       </UiSwap>
       <p class="mt-2 text-sm text-base-content/60">Selected: {{ selected_effect }}</p>
