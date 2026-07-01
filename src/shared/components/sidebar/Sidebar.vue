@@ -19,9 +19,3 @@ import { navigationOptions } from "@/shared/data/navigation-options";
 	</aside>
 </template>
 
-<!-- <style>
-@reference "tailwindcss";
-.router-link-exact-active {
-  @apply bg-black text-white dark:bg-white dark:text-black;
-}
-</style> -->
