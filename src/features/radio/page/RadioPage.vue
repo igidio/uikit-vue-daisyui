@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import UiRadio from '@/shared/ui/ui-radio/UiRadio.vue'
 import UiRadioItem from '@/shared/ui/ui-radio/UiRadioItem.vue'
 import type { UiColors } from '@/shared/ui/ui-types'
-import type { SelectSize } from '@/shared/ui/ui-select/UiSelect.vue'
+import type { SelectSize } from '@/shared/ui/ui-select/ui-select-properties'
 
 interface RadioDemo {
   label: string

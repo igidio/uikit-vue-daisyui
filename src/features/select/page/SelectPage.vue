@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { SelectOption, SelectSize } from '@/shared/ui/ui-select/ui-select-properties'
 import UiSelect from '@/shared/ui/ui-select/UiSelect.vue'
-import type { SelectOption, SelectSize } from '@/shared/ui/ui-select/UiSelect.vue'
 import type { UiColors } from '@/shared/ui/ui-types'
 
 interface SelectDemo {
